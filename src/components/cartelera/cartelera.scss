@@ -1,0 +1,14 @@
+
+.cartelera {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 4rem;
+    gap: 2rem;
+
+    &__cards {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
