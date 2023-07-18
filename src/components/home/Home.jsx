@@ -1,5 +1,6 @@
 import React from 'react' 
 import Header from '../header/Header'
+import './home.scss'
 
 const Home = () => {
   return (

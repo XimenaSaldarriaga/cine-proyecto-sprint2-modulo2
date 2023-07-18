@@ -1,3 +1,13 @@
 .header {
     background-color: black;
+    display: flex;
+    width: 100%;
+    padding: 24px 24px;
+    justify-content: space-between;
+
+    &__logo {
+        width: 148px;
+        cursor: pointer;
+    }
+
 }

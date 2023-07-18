@@ -1,0 +1,30 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: .5rem;
+
+    &__button {
+        align-items: center;
+        background-color: #1c508d;
+        padding: .65rem 1rem;
+        font-size: .75rem;
+        border: none;
+        color: #fff;
+        text-align: center;
+        font-weight: 400;
+        border-radius: 1.5em;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+    }
+
+    &__button:hover {
+        box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
+        background-color: #0076ff;
+    }
+}
