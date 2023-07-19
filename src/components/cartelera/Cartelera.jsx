@@ -20,7 +20,7 @@ const Cartelera = () => {
 
     return (
         <div className='cartelera'>
-            <h1>EN CARTELERA</h1>
+            <h1 className='cartelera__title'>EN CARTELERA</h1>
             <div className='cartelera__cards'>
                 {
                     movies.map((movie, index) => (

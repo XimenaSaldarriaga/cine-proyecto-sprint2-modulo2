@@ -7,8 +7,10 @@
     width: 200px;
     background-color: black;
     border-radius: 5px;
-    border: 0.1px solid #fff;
+    border: 0.5px solid #fff;
     color: #fff;
+    font-size: .75rem;
+    padding: 6px 12px;
 }
 
 &__icon {
@@ -21,4 +23,17 @@
     padding: 5px;
 }
 
+&__input {
+    border-radius: 1.5rem;
+    background-color: #dbe2f1;
+    outline: none;
+    font-size: .75rem;
+    padding: 6px 12px;
+    color: #1c508d;
+}
+
+}
+
+input::placeholder {
+    color: #1c508d;
 }
