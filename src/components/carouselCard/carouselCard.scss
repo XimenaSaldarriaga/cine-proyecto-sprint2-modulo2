@@ -1,5 +1,6 @@
 .CarouselCard {
     cursor: pointer;
+    position: relative;
 
     &__image {
         height: 400px;
@@ -11,24 +12,34 @@
     }
 
     &__title {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 500;
+        text-align: center; 
     }
+
 
     &__span {
         font-size: 13px;
+        text-align: center; 
     }
+
 
     &__info {
         display: flex;
         flex-direction: column;
+        align-items: center;
         color: #fff;
+        position: absolute;
+        left: 30px;
+        right: 30px;
+        bottom: 50px;
+        padding: 20px;
     }
+
 }
 
 .CarouselCard:hover {
     transform: scale(1.08) !important;
-
 }
 
 
