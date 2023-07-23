@@ -18,6 +18,11 @@
         transform: scale(1.02);
     }
 
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
     &__title {
         font-size: 18px;
         font-weight: 500;
@@ -25,5 +30,34 @@
 
     &__span {
         font-size: 13px;
+    }
+}
+
+@media (max-width:450px) { 
+
+    .card {
+        flex-direction: row;
+        width: 100%;
+
+        &__image {
+            width: 138px;
+            height: 208px;
+        }
+
+        &__title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        &__span {
+            font-size: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
     }
 }

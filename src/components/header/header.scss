@@ -17,3 +17,20 @@
     }
 
 }
+
+@media (max-width:450px) { 
+    .header {
+
+        &__navbar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        &__logo {
+            width: 120px;
+        }
+    }
+
+}
+

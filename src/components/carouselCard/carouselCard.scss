@@ -3,7 +3,6 @@
     position: relative;
 
     &__image {
-        height: 400px;
         width: 100%;
     }
 
@@ -42,4 +41,23 @@
     transform: scale(1.08) !important;
 }
 
+@media (max-width:450px) {
+    .CarouselCard {
 
+        &__title {
+            font-size: 12px;
+        }
+
+        &__span {
+            font-size: 8px;
+        }
+
+        &__info {
+            width: 100%;
+            left: 5px;
+            bottom: 5px;
+            padding: 20px;
+        }
+
+    }
+}
