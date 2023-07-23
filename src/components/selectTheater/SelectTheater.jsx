@@ -26,7 +26,7 @@ const SelectTheater = () => {
       }
       return (
         <select className='selectHeader__select' name="Cines cercanos" id="">
-          <option value="" disabled selected>
+          <option>
             Cines cercanos
           </option>
           {theaters.map((theater, index) => (

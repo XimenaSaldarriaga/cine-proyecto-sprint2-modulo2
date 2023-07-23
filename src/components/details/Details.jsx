@@ -1,8 +1,12 @@
 import React from 'react'
+import CardCartelera from '../cardCartelera/CardCartelera'
 
 const Details = () => {
   return (
-    <div>Details</div>
+    <div>
+      <CardCartelera />
+      
+    </div>
   )
 }
 
