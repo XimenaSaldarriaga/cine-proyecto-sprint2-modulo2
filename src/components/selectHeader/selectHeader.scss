@@ -38,3 +38,16 @@
 input::placeholder {
     color: #1c508d;
 }
+
+@media (max-width:450px) { 
+    .selectHeader {
+
+        &__select {
+            width: 120px;
+        }
+
+        &__input {
+            width: 100px
+        }
+    }
+}
