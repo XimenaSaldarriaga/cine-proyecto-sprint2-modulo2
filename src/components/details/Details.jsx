@@ -1,24 +1,30 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import CardCartelera from "../cardCartelera/CardCartelera";
+import Header from "../header/Header";
+import DetailsCard from "../detailsCard/DetailsCard";
+import './details.scss'
 
 const Details = () => {
   const location = useLocation();
   const { searchResults } = location.state || {};
 
-  return (
+  return ( 
+  <>
+  <Header />
+  <div className="detailsDiv">
     <div>
-      <h1>Resultados de búsqueda:</h1>
       {searchResults && searchResults.length > 0 ? (
         <div>
           {searchResults.map((movie) => (
-            <CardCartelera key={movie.id} data={movie} />
+            <DetailsCard key={movie.id} data={movie} />
           ))}
         </div>
       ) : (
         <p>No se encontraron resultados.</p>
       )}
     </div>
+    </div>
+    </>
   );
 };
 
