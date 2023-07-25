@@ -1,6 +1,7 @@
 .quantity {
-    
     &__selectTickets{
         margin: 100px 180px;
+        display: flex;
+        justify-content: space-between;
     }
 }

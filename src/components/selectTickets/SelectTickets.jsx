@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './selectTickets.scss';
+import Summary from '../summary/Summary';
 
 const SelectTickets = () => {
   const [value, setValue] = useState(0);
@@ -17,22 +18,27 @@ const SelectTickets = () => {
   };
 
   return (
-    <div className='selectTickets'>
-      <h2 className='details__title'>Selecciona tus boletos</h2>
-      <span className='selectTickets__span'>Puedes comprar 10 boletos máximo por transacción</span>
-      <div className='selectTickets__info'>
-        <span className='selectTickets__quantity'>CANTIDAD</span>
-        <div className='selectTickets__numbers'>
-          <span className='selectTickets__price'>$</span>
-          <div className='selectTickets__buttons'>
-            <button className='selectTickets__button' onClick={handleMinus}>-</button>
-            <span className='selectTickets__number'>{value}</span>
-            <button className='selectTickets__button' onClick={handlePlus}>+</button>
+    <>
+      <div className='selectTickets'>
+        <h2 className='details__title'>Selecciona tus boletos</h2>
+        <span className='selectTickets__span'>Puedes comprar 10 boletos máximo por transacción</span>
+        <div className='selectTickets__info'>
+          <span className='selectTickets__quantity'>CANTIDAD</span>
+          <div className='selectTickets__numbers'>
+            <span className='selectTickets__price'>$</span>
+            <div className='selectTickets__buttons'>
+              <button className='selectTickets__button' onClick={handleMinus}>-</button>
+              <span className='selectTickets__number'>{value}</span>
+              <button className='selectTickets__button' onClick={handlePlus}>+</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <Summary value={value} />
+    </>
   );
 };
 
 export default SelectTickets;
+
+
