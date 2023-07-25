@@ -20,9 +20,12 @@ const SearchMovie = () => {
 
       const filteredMovies = movies.filter((movie) =>
         movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+        
       );
 
       setSearchResults(filteredMovies);
+
+      setSearchTerm("");
 
       navigate("/details", { state: { searchResults: filteredMovies } });
     } catch (error) {
