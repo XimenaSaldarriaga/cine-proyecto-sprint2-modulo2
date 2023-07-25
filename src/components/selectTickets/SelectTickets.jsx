@@ -3,6 +3,7 @@ import './selectTickets.scss';
 import Summary from '../summary/Summary';
 
 const SelectTickets = () => {
+  
   const [value, setValue] = useState(0);
 
   const handlePlus = () => {

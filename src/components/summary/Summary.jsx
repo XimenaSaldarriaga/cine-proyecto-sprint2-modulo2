@@ -10,10 +10,22 @@ const Summary = ({ value }) => {
           <img src="" alt="" />
         </div>
         <div className='summary__info'>
-          <span>Pelicula:</span>
-          <span>Cimena:</span>
-          <span>Fecha:</span>
-          <span>Funcion:</span>
+          <div>
+            <span className='summary__subtitle'>Pelicula:</span>
+            <span></span>
+          </div>
+          <div>
+            <span className='summary__subtitle'>Cinema:</span>
+            <span></span>
+          </div>
+          <div>
+            <span className='summary__subtitle'>Fecha:</span>
+            <span></span>
+          </div>
+          <div>
+            <span className='summary__subtitle'>Funcion:</span>
+            <span></span>
+          </div>
         </div>
       </div>
       <p className='summary__info'>Se realizará un cargo por servicio por cada boleto dentro de la orden</p>

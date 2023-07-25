@@ -14,6 +14,7 @@
         display: flex;
         flex-direction: column;
         font-size: 14px;
+        margin-top: 30px;
     }
 
     &__details {
@@ -21,6 +22,7 @@
     }
 
     &__total {
+        margin-top: 30px;
         display: flex;
         font-size: 14px;
         font-weight: 700;
@@ -38,6 +40,10 @@
         width: 100%;
         opacity: 0.2;
         cursor: pointer;
+    }
+
+    &__subtitle {
+        font-weight: 500;
     }
 
     }

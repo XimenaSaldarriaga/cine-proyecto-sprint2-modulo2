@@ -1,6 +1,5 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import Header from "../header/Header";
 import DetailsCard from "../detailsCard/DetailsCard";
 import './details.scss'
 import HoursMovie from "../hoursMovie/HoursMovie";
@@ -11,7 +10,6 @@ const Details = () => {
 
   return (
     <>
-      <Header />
       <div className="detailsDiv">
         <div className="detailsDiv__movie">
           <div>
