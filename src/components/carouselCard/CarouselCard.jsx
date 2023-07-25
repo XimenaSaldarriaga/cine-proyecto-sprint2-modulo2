@@ -13,7 +13,7 @@ const CarouselCard = ({ data }) => {
                 <h1 className='CarouselCard__title'>{data.title}</h1>
                 <span className='CarouselCard__span'>Título en Inglés: {data.original_title}</span>
                 <span className='CarouselCard__span'>Estreno: {data.release_date} </span>
-                <span className='CarouselCard__span'>Género: </span>
+                <span className='CarouselCard__span'>Género: {data.genres.join(', ')} </span>
             </div>
         </div>
     )

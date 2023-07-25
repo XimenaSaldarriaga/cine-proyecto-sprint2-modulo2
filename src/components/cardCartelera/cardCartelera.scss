@@ -31,6 +31,16 @@
     &__span {
         font-size: 13px;
     }
+
+    &__runtime {
+        font-size: 10px;
+        background-color: rgba(209, 204, 204, 0.59);
+        width: 55px;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
 }
 
 @media (max-width:450px) { 

@@ -2,13 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './detailsCard.scss';
 import axios from 'axios';
 import YouTube from 'react-youtube';
-
-const API_URL = "https://api.themoviedb.org/3";
-const API_KEY = "4f5f43495afcc67e9553f6c684a82f84";
-const IMAGE_PATH = "https://image.tmdb.org/t/p/original";
+import { API_URL, API_KEY, URL_IMAGE } from '../../services/data';
 
 const DetailsCard = ({ data }) => {
-
     const [trailer, setTrailer] = useState(null);
     const [movie, setMovie] = useState({ title: "Loading Movies" });
     const [playing, setPlaying] = useState(true);
@@ -36,15 +32,26 @@ const DetailsCard = ({ data }) => {
         }
     };
 
+    const getGenreNames = () => {
+        if (movie.genres && movie.genres.length > 0) {
+            return movie.genres.map((genre) => genre.name).join(', ');
+        }
+        return "Desconocido";
+    };
+
     return (
         <div className='details'>
             <div className='details__movie'>
                 <div className='details__image'>
-                    <img src={`${IMAGE_PATH}${data.poster_path}`} alt="" />
+                    <img src={`${URL_IMAGE}${data.poster_path}`} alt="" />
                 </div>
                 <div className='details__info'>
                     <h1 className='details__title'>{data.title}</h1>
                     <span className='details__span'>{data.original_title}</span>
+                    <div className='details__buttons'>
+                        <span className='details__runtime'>{movie.runtime} Min </span>
+                        <span className='details__genre'>{getGenreNames()}</span>
+                    </div>
                 </div>
             </div>
             <div className='details__trailer'>
@@ -54,7 +61,7 @@ const DetailsCard = ({ data }) => {
                         <div
                             className="details__viewtrailer"
                             style={{
-                                backgroundImage: `url("${IMAGE_PATH}${movie.backdrop_path}")`,
+                                backgroundImage: `url("${URL_IMAGE}${movie.backdrop_path}")`,
                             }}
                         >
                             {playing && trailer ? (
@@ -80,5 +87,7 @@ const DetailsCard = ({ data }) => {
 };
 
 export default DetailsCard;
+
+
 
 
