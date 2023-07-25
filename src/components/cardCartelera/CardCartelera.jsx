@@ -22,3 +22,4 @@ const CardCartelera = ({ data }) => {
 
 export default CardCartelera;
 
+

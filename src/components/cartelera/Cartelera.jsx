@@ -33,3 +33,6 @@ const Cartelera = () => {
 }
 
 export default Cartelera
+
+
+

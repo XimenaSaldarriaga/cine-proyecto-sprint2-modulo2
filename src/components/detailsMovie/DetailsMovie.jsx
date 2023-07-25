@@ -29,3 +29,5 @@ const DetailsMovie = () => {
 
 export default DetailsMovie
 
+
+
