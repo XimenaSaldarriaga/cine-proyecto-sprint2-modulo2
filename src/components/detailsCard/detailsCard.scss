@@ -1,7 +1,6 @@
 .details {
     display: flex;
     flex-direction: column;
-    width: 40%;
     gap: 1rem;
 
     &__movie {
@@ -9,18 +8,17 @@
         gap: 3rem;
     }
 
-
     &__image {
-        width: 150px;
+        width: 120px;
     }
 
     &__title {
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 700;
     }
 
     &__span {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     &__info {
@@ -30,13 +28,13 @@
     }
 
     &__subtitle {
-        font-size: 13px;
+        font-size: 16px;
         font-weight: 700;
         padding-top: 1rem;
     }
 
     &__paragraph {
-        font-size: 12px;
+        font-size: 14px;
         padding-top: 10px;
     }
 
@@ -50,7 +48,7 @@
     }
 
     &__runtime {
-        font-size: 10px;
+        font-size: 12px;
         background-color: rgba(12, 11, 11, 0.864);
         color: #fff;
         width: 60px;
@@ -61,7 +59,7 @@
     }
 
     &__genre {
-        font-size: 10px;
+        font-size: 12px;
         background-color: #1c508d;
         color: #fff;
         padding: 6px;
@@ -74,5 +72,4 @@
         display: flex;
         gap: 10px;
     }
-
 }

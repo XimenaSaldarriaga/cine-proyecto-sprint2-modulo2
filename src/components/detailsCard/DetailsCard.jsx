@@ -67,11 +67,12 @@ const DetailsCard = ({ data }) => {
                             {playing && trailer ? (
                                 <YouTube
                                     videoId={trailer.key}
-                                    className="reproductor container"
-                                    containerClassName={"youtube-container amru"}
                                     opts={{
+                                        width: "100%",
+                                        height: "350px",
                                         playerVars: {
                                             rel: 0,
+                                            controls:0,
                                         },
                                     }}
                                 />

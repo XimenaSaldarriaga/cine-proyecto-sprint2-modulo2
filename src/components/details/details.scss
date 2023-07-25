@@ -1,4 +1,9 @@
 .detailsDiv {
-    margin: 120px;
-    width: 100%;
+    display: flex;
+    margin: 100px 180px;
+    justify-content: space-between;
+
+    &__movie {
+        width: 60%;
+    }
 }
