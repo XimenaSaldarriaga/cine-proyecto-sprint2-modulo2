@@ -1,5 +1,7 @@
 .hours {
 
+    width: 30%;
+
     &__title{
         font-size: 18px;
         font-weight: 700;
@@ -30,6 +32,11 @@
         cursor: pointer;
     }
 
+    &__option:hover {
+        color: #fff;
+        background-color: rgba(12, 11, 11, 0.864);
+    }
+
     &__button {
         margin-top: 30px;
         background-color: #1c508d;;
@@ -37,7 +44,13 @@
         border-radius: 50px;
         color: #fff;
         font-size: 12px;
-        padding: 5px;
+        padding: 10px 5px;
         width: 100%;
+        opacity: 0.2;
+        cursor: pointer;
+    }
+
+    &__button:hover {
+        opacity: 100;
     }
 }
