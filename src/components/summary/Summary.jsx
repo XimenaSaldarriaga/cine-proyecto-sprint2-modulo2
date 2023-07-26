@@ -1,7 +1,7 @@
 import React from 'react';
 import './summary.scss';
 
-const Summary = ({ value }) => {
+const Summary = ({value}) => {
 
   return (
     <div className='summary'>
@@ -40,4 +40,7 @@ const Summary = ({ value }) => {
 };
 
 export default Summary;
+
+
+
 

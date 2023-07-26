@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import DetailsCard from '../detailsCard/DetailsCard';
 import { getDataMovies } from '../../services/data';
 import HoursMovie from "../hoursMovie/HoursMovie";
-import './details.scss'
+
+import './details.scss';
 
 const Details = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = React.useState([]);
   const { id } = useParams();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchMoviesData = async () => {
       const data = await getDataMovies();
       setMovies(data);
@@ -34,4 +35,7 @@ const Details = () => {
 };
 
 export default Details;
+
+
+
 

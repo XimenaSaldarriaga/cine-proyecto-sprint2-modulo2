@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import './detailsCard.scss';
 import axios from 'axios';
 import YouTube from 'react-youtube';
@@ -40,11 +39,11 @@ const DetailsCard = ({ data }) => {
     <div className='details'>
       <div className='details__movie'>
         <div className='details__image'>
-          <img src={`${URL_IMAGE}${movie.poster_path}`} alt='' />
+          <img src={`${URL_IMAGE}${data.poster_path}`} alt='' />
         </div>
         <div className='details__info'>
-          <h1 className='details__title'>{movie.title}</h1>
-          <span className='details__span'>{movie.original_title}</span>
+          <h1 className='details__title'>{data.title}</h1>
+          <span className='details__span'>{data.original_title}</span>
           <div className='details__buttons'>
             <span className='details__runtime'>{movie.runtime} Min </span>
             <span className='details__genre'>{getGenreNames()}</span>
@@ -80,7 +79,7 @@ const DetailsCard = ({ data }) => {
           ) : null}
         </div>
         <h2 className='details__subtitle'>Sinopsis</h2>
-        <p className='details__paragraph'>{movie.overview}</p>
+        <p className='details__paragraph'>{data.overview}</p>
       </div>
     </div>
   );
