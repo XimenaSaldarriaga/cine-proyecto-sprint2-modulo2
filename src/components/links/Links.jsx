@@ -10,7 +10,7 @@ const Links = () => {
                   <NavLink to="/"></NavLink>
                 </li>
                 <li>
-                  <NavLink to="/details"></NavLink>
+                  <NavLink to="/details/:id"></NavLink>
                 </li>
                 <li>
                   <NavLink to="/quantity"></NavLink>

@@ -1,33 +1,37 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import DetailsCard from "../detailsCard/DetailsCard";
-import './details.scss'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import DetailsCard from '../detailsCard/DetailsCard';
+import { getDataMovies } from '../../services/data';
 import HoursMovie from "../hoursMovie/HoursMovie";
+import './details.scss'
 
 const Details = () => {
-  const location = useLocation();
-  const { searchResults } = location.state || {};
+  const [movies, setMovies] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchMoviesData = async () => {
+      const data = await getDataMovies();
+      setMovies(data);
+    };
+    fetchMoviesData();
+  }, []);
+
+  const selectedMovie = movies.find((movie) => movie.id === Number(id));
 
   return (
     <>
       <div className="detailsDiv">
         <div className="detailsDiv__movie">
           <div>
-            {searchResults && searchResults.length > 0 ? (
-              <div>
-                {searchResults.map((movie) => (
-                  <DetailsCard key={movie.id} data={movie} />
-                ))}
-              </div>
-            ) : (
-              <p>No se encontraron resultados.</p>
-            )}
+            {selectedMovie && <DetailsCard data={selectedMovie} />}
           </div>
         </div>
-        <HoursMovie/>
+        <HoursMovie />
       </div>
     </>
   );
 };
 
 export default Details;
+

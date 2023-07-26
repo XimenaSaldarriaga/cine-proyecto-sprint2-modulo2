@@ -20,14 +20,18 @@ const SearchMovie = () => {
 
       const filteredMovies = movies.filter((movie) =>
         movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-        
       );
 
       setSearchResults(filteredMovies);
 
       setSearchTerm("");
 
-      navigate("/details", { state: { searchResults: filteredMovies } });
+      if (filteredMovies.length > 0) {
+        const firstMovieId = filteredMovies[0].id;
+        navigate(`/details/${firstMovieId}`, { state: { searchResults: filteredMovies } });
+      } else {
+        console.log("No se encontraron películas");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -49,3 +53,4 @@ const SearchMovie = () => {
 };
 
 export default SearchMovie;
+
