@@ -5,7 +5,7 @@
 
 .seats {
     margin: 100px 180px;
-    width: 40%;
+    width: 35%;
 
     &__options {
         display: flex;
@@ -44,11 +44,15 @@
 
     &__map {
         display: grid;
-        grid-template-columns: repeat(15, 0.05fr);
-        gap: 10px 0px;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 15px 4px;
         margin-top: 50px; 
       }
 
+      &__maps {
+        display: flex;
+        justify-content: space-between;
+      }
 
 }
 

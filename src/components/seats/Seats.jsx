@@ -37,14 +37,14 @@ const svgContent = (
 );
 
 const Seats = () => {
-  const seatsArray = new Array(120).fill(null); 
+  const seatsArray = new Array(80).fill(null);
 
   return (
     <div className="seats">
       <h2 className="seats__subtitle">Selecciona tus asientos</h2>
       <p className="seats__paragraph">Para cambiar tu lugar asignado da click en el asiento deseado</p>
       <div className="seats__options">
-      <div className="seats__option">
+        <div className="seats__option">
           <div className="seats__yellow">
             {svgContent}
           </div>
@@ -64,12 +64,21 @@ const Seats = () => {
         </div>
       </div>
       <hr />
-      <div className="seats__map">
-      {seatsArray.map((_, index) => (
-          <button className="seats__blue" key={index}>
-            {svgContent}
-          </button>
-        ))}
+      <div className='seats__maps'>
+        <div className="seats__map">
+          {seatsArray.map((_, index) => (
+            <button className="seats__blue" key={index}>
+              {svgContent}
+            </button>
+          ))}
+        </div>
+        <div className="seats__map">
+          {seatsArray.map((_, index) => (
+            <button className="seats__blue seats__chair" key={index}>
+              {svgContent}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
