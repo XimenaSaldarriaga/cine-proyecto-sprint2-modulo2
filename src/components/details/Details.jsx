@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useNavigate} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import DetailsCard from '../detailsCard/DetailsCard';
 import { getDataMovies } from '../../services/data';
@@ -9,7 +9,7 @@ import './details.scss';
 const Details = ({navigate}) => {
 
   const [movies, setMovies] = React.useState([]);
-  const { id } = useParams();
+  let { id } = useParams();
 
   React.useEffect(() => {
     const fetchMoviesData = async () => {

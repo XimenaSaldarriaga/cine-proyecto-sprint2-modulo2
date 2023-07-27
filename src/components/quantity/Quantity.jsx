@@ -10,7 +10,7 @@ const Quantity = () => {
     <>
       <div className='quantity'>
         <div className="quantity__selectTickets">
-          <SelectTickets />
+          <SelectTickets/>
         </div>
       </div>
     </>

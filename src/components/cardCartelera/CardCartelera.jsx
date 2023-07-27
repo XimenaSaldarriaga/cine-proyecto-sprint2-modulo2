@@ -4,6 +4,7 @@ import './cardCartelera.scss';
 import { URL_IMAGE } from '../../services/data';
 
 const CardCartelera = ({ data }) => {
+  
   return (
     <Link to={`/details/${data.id}`} className='card-link'>
       <div className='card'>

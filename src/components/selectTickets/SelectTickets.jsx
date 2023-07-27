@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import './selectTickets.scss';
 import Summary from '../summary/Summary';
+import { useParams } from 'react-router-dom';
+import { getDataMovies } from '../../services/data';
 
 const SelectTickets = () => {
-  
+  const [movie, setMovie] = React.useState([]);
+  let { id } = useParams();
+
+  React.useEffect(() => {
+    const fetchMoviesData = async () => {
+      const data = await getDataMovies();
+      setMovie(data);
+    };
+    fetchMoviesData();
+  }, []);
+
+  const selecMovie = movie.find((movi) => movi.id === Number(id));
   const [value, setValue] = useState(0);
 
   const handlePlus = () => {
@@ -28,18 +41,23 @@ const SelectTickets = () => {
           <div className='selectTickets__numbers'>
             <span className='selectTickets__price'>$</span>
             <div className='selectTickets__buttons'>
-              <button className='selectTickets__button' onClick={handleMinus}>-</button>
+              <button className='selectTickets__button' onClick={handleMinus}>
+                -
+              </button>
               <span className='selectTickets__number'>{value}</span>
-              <button className='selectTickets__button' onClick={handlePlus}>+</button>
+              <button className='selectTickets__button' onClick={handlePlus}>
+                +
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <Summary value={value} />
+      {selecMovie && <Summary value={value} data={selecMovie} />}
     </>
   );
 };
 
 export default SelectTickets;
+
 
 
