@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import './seats.scss';
 
 const svgContent = (
@@ -42,13 +42,26 @@ const Seats = () => {
 
   const [selectedButtons, setSelectedButtons] = useState([]);
 
-  const handleSeatClick = (index) => {
-    if (selectedButtons.includes(index)) {
-      setSelectedButtons((prevSelected) => prevSelected.filter((buttonIndex) => buttonIndex !== index));
-    } else {
-      setSelectedButtons((prevSelected) => [...prevSelected, index]);
-    }
+  const updateSelectedButtons = (selected) => {
+    setSelectedButtons(selected);
+    localStorage.setItem('selectedButtons', JSON.stringify(selected));
   };
+
+  useEffect(() => {
+    const storedSelectedButtons = JSON.parse(localStorage.getItem('selectedButtons'));
+    if (storedSelectedButtons && Array.isArray(storedSelectedButtons)) {
+      setSelectedButtons(storedSelectedButtons);
+    }
+  }, []);
+
+  const handleSeatClick = (index) => {
+    const updatedSelectedButtons = selectedButtons.includes(index)
+      ? selectedButtons.filter((buttonIndex) => buttonIndex !== index)
+      : [...selectedButtons, index];
+
+    updateSelectedButtons(updatedSelectedButtons);
+  };
+
 
   return (
     <div className="seats">
