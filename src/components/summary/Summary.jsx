@@ -31,7 +31,7 @@ const Summary = ({value, data}) => {
           </div>
         </div>
       </div>
-      <p className='summary__info'>Se realizará un cargo por servicio por cada boleto dentro de la orden</p>
+      <p className='summary__paragraph'>Se realizará un cargo por servicio por cada boleto dentro de la orden</p>
       <div className='summary__total'>
         <span>Total (IVA incluido): </span>
         <span className='summary__price'>$</span>

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { getDataMovies } from '../../services/data';
 
 const SelectTickets = () => {
+  
   const [movie, setMovie] = React.useState([]);
   let { id } = useParams();
 

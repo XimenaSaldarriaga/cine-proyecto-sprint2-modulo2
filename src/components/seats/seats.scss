@@ -1,0 +1,51 @@
+@mixin chairs__properties ($fill) {
+    width: 20px;
+    fill:$fill
+}
+
+.seats {
+    margin: 100px 180px;
+    width: 40%;
+
+    &__options {
+        display: flex;
+        gap: 2rem;
+        margin-top: 30px;
+    }
+
+    &__option {
+        display: flex;
+        gap: 0.2rem;
+        font-size: 12px;
+    }
+
+    &__blue{
+        @include chairs__properties(#0090ca)
+    }
+    
+    &__yellow {
+            @include chairs__properties(#ffcd26)
+    }
+
+    &__red {
+        @include chairs__properties(#e04d39)
+}
+
+    &__subtitle{
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    &__paragraph {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+}
+
+hr {
+    margin-top: 50px;
+    height: 3px;
+    background: #a9a4a4;
+}
+
+
