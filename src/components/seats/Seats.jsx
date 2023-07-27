@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState} from 'react';
 import './seats.scss';
 
 const svgContent = (
@@ -37,7 +37,18 @@ const svgContent = (
 );
 
 const Seats = () => {
-  const seatsArray = new Array(80).fill(null);
+
+  const seatsArray = new Array(160).fill(null);
+
+  const [selectedButtons, setSelectedButtons] = useState([]);
+
+  const handleSeatClick = (index) => {
+    if (selectedButtons.includes(index)) {
+      setSelectedButtons((prevSelected) => prevSelected.filter((buttonIndex) => buttonIndex !== index));
+    } else {
+      setSelectedButtons((prevSelected) => [...prevSelected, index]);
+    }
+  };
 
   return (
     <div className="seats">
@@ -64,28 +75,26 @@ const Seats = () => {
         </div>
       </div>
       <hr />
-      <div className='seats__maps'>
-        <div className="seats__map">
-          {seatsArray.map((_, index) => (
-            <button className="seats__blue" key={index}>
-              {svgContent}
-            </button>
-          ))}
-        </div>
-        <div className="seats__map">
-          {seatsArray.map((_, index) => (
-            <button className="seats__blue seats__chair" key={index}>
-              {svgContent}
-            </button>
-          ))}
-        </div>
+
+      <div className="seats__maps">
+      <div className="seats__map">
+        {seatsArray.map((_, index) => (
+          <button
+            className={`seats__blue ${selectedButtons.includes(index) ? "seats__yellow" : ""}`}
+            key={index} 
+            onClick={() => handleSeatClick(index)}
+            id={index}
+          >
+            {svgContent}
+          </button>
+        ))}
       </div>
+    </div>
     </div>
   );
 };
 
 export default Seats;
-
 
 
 
