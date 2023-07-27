@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './HoursMovie.scss';
+import './hoursMovie.scss';
 
-const HoursMovie = () => {
+const HoursMovie = ({ data}) => {
   const [selectedOption, setSelectedOption] = useState(null);
-  const navigate = useNavigate(); 
+
+  const navigate = useNavigate();
 
   const handleOptionClick = (index) => {
     setSelectedOption(index);
   };
 
-  const handleSelectBoletos = () => {
-    if (selectedOption !== null) {
-      navigate('/quantity'); 
+  const handleSelectBoletos = (id) => {
+    if (selectedOption !== null && data && data.id) {
+      navigate(`/quantity/${data.id}`);
     }
   };
-
   const hoursOptions = [
     { time: '18:00', index: 0 },
     { time: '19:30', index: 1 },

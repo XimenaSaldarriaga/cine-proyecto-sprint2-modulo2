@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './summary.scss';
+import { API_URL, API_KEY, URL_IMAGE } from '../../services/data';
 
-const Summary = ({value}) => {
+const Summary = ({value, data}) => {
+
 
   return (
     <div className='summary'>
       <h2 className='summary__title'>Resumen de compra</h2>
       <div className='summary__details'>
         <div className='summary__image'>
-          <img src="" alt="" />
+          {/* <img src={`${URL_IMAGE}${data.poster_path}`} alt='' /> */}
         </div>
         <div className='summary__info'>
           <div>

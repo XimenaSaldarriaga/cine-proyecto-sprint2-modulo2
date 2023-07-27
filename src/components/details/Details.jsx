@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useNavigate} from 'react';
 import { useParams } from 'react-router-dom';
 import DetailsCard from '../detailsCard/DetailsCard';
 import { getDataMovies } from '../../services/data';
@@ -6,7 +6,8 @@ import HoursMovie from "../hoursMovie/HoursMovie";
 
 import './details.scss';
 
-const Details = () => {
+const Details = ({navigate}) => {
+
   const [movies, setMovies] = React.useState([]);
   const { id } = useParams();
 
@@ -28,7 +29,7 @@ const Details = () => {
             {selectedMovie && <DetailsCard data={selectedMovie} />}
           </div>
         </div>
-        <HoursMovie />
+        <HoursMovie data={selectedMovie} navig={navigate} />
       </div>
     </>
   );
