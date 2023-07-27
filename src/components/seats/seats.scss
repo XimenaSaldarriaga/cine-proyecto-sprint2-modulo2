@@ -15,8 +15,9 @@
 
     &__option {
         display: flex;
-        gap: 0.2rem;
+        gap: 0.5rem;
         font-size: 12px;
+        align-items: center;
     }
 
     &__blue{
@@ -40,6 +41,15 @@
         font-size: 14px;
         margin-top: 10px;
     }
+
+    &__map {
+        display: grid;
+        grid-template-columns: repeat(15, 0.05fr);
+        gap: 10px 0px;
+        margin-top: 50px; 
+      }
+
+
 }
 
 hr {
@@ -47,5 +57,4 @@ hr {
     height: 3px;
     background: #a9a4a4;
 }
-
 
