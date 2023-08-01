@@ -6,4 +6,10 @@
     &__movie {
         width: 60%;
     }
+
+    &__hour {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
 }

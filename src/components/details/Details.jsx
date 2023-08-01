@@ -3,16 +3,18 @@ import { useParams } from 'react-router-dom';
 import DetailsCard from '../detailsCard/DetailsCard';
 import { getDataMovies } from '../../services/data';
 import HoursMovie from "../hoursMovie/HoursMovie";
+import SelectTheater from "../selectTheater/SelectTheater";
 import HeaderNav from '../headerNav/HeaderNav';
 
 import './details.scss';
 
 const Details = ({ navigate }) => {
+  const [movies, setMovies] = useState([]);
+  const [selectedTheater, setSelectedTheater] = useState(null);
 
-  const [movies, setMovies] = React.useState([]);
-  let { id } = useParams();
+  const { id } = useParams();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchMoviesData = async () => {
       const data = await getDataMovies();
       setMovies(data);
@@ -21,6 +23,10 @@ const Details = ({ navigate }) => {
   }, []);
 
   const selectedMovie = movies.find((movie) => movie.id === Number(id));
+
+  const handleTheaterSelect = (theater) => {
+    setSelectedTheater(theater);
+  };
 
   return (
     <>
@@ -31,13 +37,18 @@ const Details = ({ navigate }) => {
             {selectedMovie && <DetailsCard data={selectedMovie} />}
           </div>
         </div>
-        <HoursMovie data={selectedMovie} navig={navigate} />
+        <div className='detailsDiv__hour'>
+        <SelectTheater onTheaterSelect={handleTheaterSelect} />
+        <HoursMovie data={selectedMovie} selectedTheater={selectedTheater} navig={navigate} />
+        </div>
       </div>
     </>
   );
 };
 
 export default Details;
+
+
 
 
 
