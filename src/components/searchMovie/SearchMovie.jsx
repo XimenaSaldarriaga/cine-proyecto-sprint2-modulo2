@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { URL_CONSULTA } from "../../services/data";
 import { useNavigate } from "react-router-dom";
+import './searchMovie.scss'
+import Swal from 'sweetalert2';
+
 
 const SearchMovie = () => {
   const navigate = useNavigate();
@@ -30,7 +33,11 @@ const SearchMovie = () => {
         const firstMovieId = filteredMovies[0].id;
         navigate(`/details/${firstMovieId}`, { state: { searchResults: filteredMovies } });
       } else {
-        console.log("No se encontraron películas");
+        Swal.fire({
+          text: 'Lo siento, no se encontraron películas con ese nombre',
+          confirmButtonText: 'Aceptar',
+          confirmButtonColor: '#3085d6',
+        });
       }
     } catch (error) {
       console.error(error);
