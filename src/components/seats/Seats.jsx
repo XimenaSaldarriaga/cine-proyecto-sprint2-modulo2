@@ -1,5 +1,6 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './seats.scss';
+import HeaderNav from '../headerNav/HeaderNav';
 
 const svgContent = (
   <svg
@@ -64,46 +65,49 @@ const Seats = () => {
 
 
   return (
-    <div className="seats">
-      <h2 className="seats__subtitle">Selecciona tus asientos</h2>
-      <p className="seats__paragraph">Para cambiar tu lugar asignado da click en el asiento deseado</p>
-      <div className="seats__options">
-        <div className="seats__option">
-          <div className="seats__yellow">
-            {svgContent}
+    <>
+      <HeaderNav />
+      <div className="seats">
+        <h2 className="seats__subtitle">Selecciona tus asientos</h2>
+        <p className="seats__paragraph">Para cambiar tu lugar asignado da click en el asiento deseado</p>
+        <div className="seats__options">
+          <div className="seats__option">
+            <div className="seats__yellow">
+              {svgContent}
+            </div>
+            <span>Seleccionado</span>
           </div>
-          <span>Seleccionado</span>
-        </div>
-        <div className="seats__option">
-          <div className="seats__red">
-            {svgContent}
+          <div className="seats__option">
+            <div className="seats__red">
+              {svgContent}
+            </div>
+            <span>Ocupado</span>
           </div>
-          <span>Ocupado</span>
-        </div>
-        <div className="seats__option">
-          <div className="seats__blue">
-            {svgContent}
+          <div className="seats__option">
+            <div className="seats__blue">
+              {svgContent}
+            </div>
+            <span>Disponible</span>
           </div>
-          <span>Disponible</span>
         </div>
-      </div>
-      <hr />
+        <hr />
 
-      <div className="seats__maps">
-      <div className="seats__map">
-        {seatsArray.map((_, index) => (
-          <button
-            className={`seats__blue ${selectedButtons.includes(index) ? "seats__yellow" : ""}`}
-            key={index} 
-            onClick={() => handleSeatClick(index)}
-            id={index}
-          >
-            {svgContent}
-          </button>
-        ))}
+        <div className="seats__maps">
+          <div className="seats__map">
+            {seatsArray.map((_, index) => (
+              <button
+                className={`seats__blue ${selectedButtons.includes(index) ? "seats__yellow" : ""}`}
+                key={index}
+                onClick={() => handleSeatClick(index)}
+                id={index}
+              >
+                {svgContent}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
+    </>
   );
 };
 

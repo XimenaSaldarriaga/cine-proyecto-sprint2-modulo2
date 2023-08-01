@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../navbar/Navbar';
 import SelectHeader from '../selectHeader/SelectHeader';
+import './headerNav.scss'
 
-const HeaderNav = () => {
+const HeaderNav = ({ onFilterByGenre }) => {
+
+  const [selectedGenre, setSelectedGenre] = useState(null);
+
+  const filterMoviesByGenre = (genreId) => {
+    setSelectedGenre(genreId);
+  };
   return (
     <div className='header__navbar'>
       <Link to="/">
@@ -13,10 +19,19 @@ const HeaderNav = () => {
           alt=""
         />
       </Link>
-      <Navbar />
+      <nav className='navbar'>
+        <button className='navbar__button' onClick={() => onFilterByGenre(28)}>Acción</button>
+        <button className='navbar__button' onClick={() => onFilterByGenre(27)}>Terror</button>
+        <button className='navbar__button' onClick={() => onFilterByGenre(878)}>Ciencia ficción</button>
+        <button className='navbar__button' onClick={() => onFilterByGenre(35)}>Comedia</button>
+      </nav>
       <SelectHeader />
     </div>
   );
 }
 
 export default HeaderNav;
+
+
+
+

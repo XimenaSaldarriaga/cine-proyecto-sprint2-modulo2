@@ -8,12 +8,10 @@ import Payment from '../payment/Payment'
 import Transaction from '../transaction/Transaction'
 import Download from '../download/Download'
 import Links from '../links/Links'
-import Header from '../header/Header'
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
         <Route path="/" element={<Links />}>
           <Route index element={<Home />} />

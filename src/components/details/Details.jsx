@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom';
 import DetailsCard from '../detailsCard/DetailsCard';
 import { getDataMovies } from '../../services/data';
 import HoursMovie from "../hoursMovie/HoursMovie";
+import HeaderNav from '../headerNav/HeaderNav';
 
 import './details.scss';
 
-const Details = ({navigate}) => {
+const Details = ({ navigate }) => {
 
   const [movies, setMovies] = React.useState([]);
   let { id } = useParams();
@@ -23,6 +24,7 @@ const Details = ({navigate}) => {
 
   return (
     <>
+      <HeaderNav />
       <div className="detailsDiv">
         <div className="detailsDiv__movie">
           <div>
