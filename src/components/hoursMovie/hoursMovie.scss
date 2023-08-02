@@ -34,12 +34,12 @@
 
     &__option:hover {
         color: #fff;
-        background-color: rgba(12, 11, 11, 0.864);
+        background-color: #1c508d;
     }
 
     &__button {
         margin-top: 30px;
-        background-color: #1c508d;;
+        background-color: #1c508d;
         border: none;
         border-radius: 50px;
         color: #fff;
@@ -57,7 +57,7 @@
 
 .hours__option.selected {
     color: #fff;
-    background-color: rgba(12, 11, 11, 0.864);
+    background-color: #1c508d;
   }
 
   .hours__button.visible {

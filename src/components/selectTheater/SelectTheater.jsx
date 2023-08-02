@@ -29,6 +29,8 @@ const SelectTheater = ({ onTheaterSelect }) => {
   };
 
   return (
+    <>
+    <p className="hours__title">Selecciona un teatro</p>
     <select className="selectHeader__select" name="Cines cercanos" onChange={handleTheaterSelect}>
       <option>Cines cercanos</option>
       {theaters.map((theater, index) => (
@@ -37,6 +39,7 @@ const SelectTheater = ({ onTheaterSelect }) => {
         </option>
       ))}
     </select>
+    </>
   );
 };
 

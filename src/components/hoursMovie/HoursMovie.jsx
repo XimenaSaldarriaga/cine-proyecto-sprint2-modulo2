@@ -3,16 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import './hoursMovie.scss';
 
 const HoursMovie = ({ data, selectedTheater }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedHour, setSelectedHour] = useState(null);
 
   const navigate = useNavigate();
 
-  const handleOptionClick = (index) => {
-    setSelectedOption(index);
+  const handleDateClick = (date) => {
+    setSelectedDate(date);
+    setSelectedHour(null);
+  };
+
+  const handleHourClick = (hour) => {
+    setSelectedHour(hour);
   };
 
   const handleSelectBoletos = () => {
-    if (selectedOption !== null && data && data.id) {
+    if (selectedDate && selectedHour && data && data.id) {
       navigate(`/quantity/${data.id}`);
     }
   };
@@ -22,22 +28,44 @@ const HoursMovie = ({ data, selectedTheater }) => {
 
   return (
     <div className="hours">
-      <h1 className="hours__title">Horarios disponibles - 07 de julio</h1>
-      <p className="hours__paragraph">Elige el horario que prefieras</p>
-      <p className="hours__theater">{firstTheaterName}</p>
+      {firstTheater && (
+        <p className="hours__title">{firstTheaterName}</p>
+      )}
+      {firstTheater && (
+        <p className="hours__theater">Selecciona una fecha</p>
+      )}
       <div className="hours__options">
         {firstTheater &&
-          firstTheater.functions.map((func) => (
+          firstTheater.dates.map((date, index) => (
             <button
-              key={func.id}
-              className={`hours__option ${selectedOption === func.id ? 'selected' : ''}`}
-              onClick={() => handleOptionClick(func.id)}
+              key={index}
+              className={`hours__option ${selectedDate === date.date ? 'selected' : ''}`}
+              onClick={() => handleDateClick(date.date)}
             >
-              {func.hour}
+              {date.date}
             </button>
           ))}
       </div>
-      <button className={`hours__button ${selectedOption !== null ? 'visible' : ''}`} onClick={handleSelectBoletos}>
+      {selectedDate && firstTheater && (
+        <p className="hours__theater">Horarios disponibles {selectedDate}</p>
+      )}
+      {selectedDate && firstTheater && (
+        <div className="hours__options">
+          {firstTheater &&
+            firstTheater.dates
+              .find((date) => date.date === selectedDate)
+              .hours.map((hour, index) => (
+                <button
+                  key={index}
+                  className={`hours__option ${selectedHour === hour ? 'selected' : ''}`}
+                  onClick={() => handleHourClick(hour)}
+                >
+                  {hour}
+                </button>
+              ))}
+        </div>
+      )}
+      <button className={`hours__button ${selectedDate && selectedHour ? 'visible' : ''}`} onClick={handleSelectBoletos}>
         Seleccionar boletos
       </button>
     </div>
@@ -45,6 +73,9 @@ const HoursMovie = ({ data, selectedTheater }) => {
 };
 
 export default HoursMovie;
+
+
+
 
 
 
