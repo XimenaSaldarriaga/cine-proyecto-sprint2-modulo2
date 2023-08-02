@@ -1,11 +1,14 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './selectTickets.scss';
 import Summary from '../summary/Summary';
 import { useParams } from 'react-router-dom';
 import { getDataMovies } from '../../services/data';
 
 const SelectTickets = () => {
-  
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedHour, setSelectedHour] = useState(null);
+  const [selectedTheater, setselectedTheater] = useState(null);
+
   const [movie, setMovie] = React.useState([]);
   let { id } = useParams();
 
@@ -32,6 +35,9 @@ const SelectTickets = () => {
     }
   };
 
+  const ticketPrice = 15000;
+  const currentPrice = ticketPrice * value;
+
   return (
     <>
       <div className='selectTickets'>
@@ -40,7 +46,7 @@ const SelectTickets = () => {
         <div className='selectTickets__info'>
           <span className='selectTickets__quantity'>CANTIDAD</span>
           <div className='selectTickets__numbers'>
-            <span className='selectTickets__price'>$</span>
+          <span className='selectTickets__price'>{currentPrice.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}</span>
             <div className='selectTickets__buttons'>
               <button className='selectTickets__button' onClick={handleMinus}>
                 -
@@ -53,12 +59,26 @@ const SelectTickets = () => {
           </div>
         </div>
       </div>
-      {selecMovie && <Summary value={value} data={selecMovie} />}
+      {selecMovie && (
+        <Summary
+          value={value}
+          data={selecMovie}
+          selectedDate={selectedDate}
+          selectedHour={selectedHour}
+          selectedTheater={selectedTheater}
+          currentPrice={currentPrice}
+        />
+      )}
     </>
   );
 };
 
 export default SelectTickets;
+
+
+
+
+
 
 
 

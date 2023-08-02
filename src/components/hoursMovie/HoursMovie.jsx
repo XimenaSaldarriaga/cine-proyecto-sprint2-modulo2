@@ -12,7 +12,7 @@ const HoursMovie = ({ data, selectedTheater }) => {
     setSelectedDate(date);
     setSelectedHour(null);
   };
-
+  
   const handleHourClick = (hour) => {
     setSelectedHour(hour);
   };
@@ -73,11 +73,6 @@ const HoursMovie = ({ data, selectedTheater }) => {
 };
 
 export default HoursMovie;
-
-
-
-
-
 
 
 
