@@ -47,7 +47,7 @@ const HoursMovie = ({ data}) => {
   return (
     <div className="hours">
       <p className="hours__title">Selecciona un teatro</p>
-      <select className="selectHeader__select" name="Cines cercanos" onChange={handleTheaterSelect}>
+      <select className="selectHeader__select hours__select" name="Cines cercanos" onChange={handleTheaterSelect}>
         <option>Cines cercanos</option>
         {theaters.map((theater, index) => (
           <option className="selectHeader__option" key={index} value={theater.name}>

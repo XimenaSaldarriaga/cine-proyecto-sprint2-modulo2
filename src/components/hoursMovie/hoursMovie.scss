@@ -5,6 +5,11 @@
     &__title{
         font-size: 18px;
         font-weight: 700;
+        margin-top: 20px;
+    }
+
+    &__select {
+        margin-top: 20px;
     }
 
     &__paragraph {
@@ -15,7 +20,7 @@
     &__theater {
         font-size: 14px;
         font-weight: 700;
-        margin-top: 15px;
+        margin-top: 30px;
     }
 
     &__options {
@@ -38,7 +43,7 @@
     }
 
     &__button {
-        margin-top: 30px;
+        margin-top: 45px;
         background-color: #1c508d;
         border: none;
         border-radius: 50px;
@@ -58,8 +63,11 @@
 .hours__option.selected {
     color: #fff;
     background-color: #1c508d;
+    border: 2px solid #1c508d;
   }
 
   .hours__button.visible {
     opacity: 1; 
   }
+
+  
