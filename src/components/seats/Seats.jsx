@@ -59,7 +59,6 @@ const Seats = () => {
   const seatsArray = new Array(totalSeats).fill(null);
   const selecMovie = movie.find((movi) => movi.id === Number(id));
   const currentPrice = ticketPrice * value;
-
   const [selectedButtons, setSelectedButtons] = useState([]);
 
   useEffect(() => {
@@ -162,7 +161,7 @@ const Seats = () => {
               hour={selectedHour}
               theater={selectedTheater}
               sala={selectedSala}
-              value={selectedButtons.length}
+              value={value}
               currentPrice={currentPrice}
             />
           )}
