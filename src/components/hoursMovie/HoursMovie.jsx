@@ -5,9 +5,11 @@ import { URL_THEATERS } from '../../services/data';
 import './hoursMovie.scss';
 
 const HoursMovie = ({ data}) => {
+
   const [selectedTheater, setSelectedTheater] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedHour, setSelectedHour] = useState(null);
+  const [selectedSala, setSelectedSala] = useState(null);
   const [theaters, setTheaters] = useState([]);
 
   useEffect(() => {
@@ -32,16 +34,17 @@ const HoursMovie = ({ data}) => {
     setSelectedDate(date);
   };
 
-  const handleHourClick = (hour) => {
-    const hourOnly = hour.split(" - ")[0];
-    setSelectedHour(hourOnly);
+  const handleHourClick = (hourWithSala) => {
+    const [hourValue, sala] = hourWithSala.split(" - ");
+    setSelectedHour(hourValue.trim());
+    setSelectedSala(sala.trim());
   };
 
   const navigate = useNavigate();
 
   const handleSelectBoletos = () => {
-    if (selectedDate && selectedHour && selectedTheater && data && data.id) {
-      navigate(`/quantity/${data.id}?theater=${selectedTheater.name}&date=${selectedDate}&hour=${selectedHour}`);
+    if (selectedDate && selectedHour && selectedTheater && data && data.id && selectedSala) {
+      navigate(`/quantity/${data.id}?theater=${selectedTheater.name}&date=${selectedDate}&hour=${selectedHour}&sala=${selectedSala}`);
     }
   };
 

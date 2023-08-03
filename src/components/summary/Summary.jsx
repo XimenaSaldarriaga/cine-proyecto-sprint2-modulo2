@@ -3,7 +3,7 @@ import { URL_IMAGE } from '../../services/data';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Summary = ({ data, theater, date, hour}) => {
+const Summary = ({ data, theater, date, hour, sala}) => {
 
   const ticketPrice = 15000;
   const [value, setValue] = useState(0);
@@ -70,7 +70,7 @@ const Summary = ({ data, theater, date, hour}) => {
           </div>
           <div>
             <span className="summary__subtitle">Sala:</span>
-            <span>{}</span>
+            <span>{sala}</span>
           </div>
           <div>
             <span className="summary__subtitle">Asientos:</span>

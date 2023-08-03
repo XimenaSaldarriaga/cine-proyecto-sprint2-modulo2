@@ -13,6 +13,7 @@ const Quantity = () => {
   const selectedDate = searchParams.get('date');
   const selectedHour = searchParams.get('hour');
   const selectedTheater = searchParams.get('theater');
+  const selectedSala = searchParams.get('sala');
 
   useEffect(() => {
     const fetchMoviesData = async () => {
@@ -35,6 +36,7 @@ const Quantity = () => {
               date={selectedDate}
               hour={selectedHour}
               theater={selectedTheater}
+              sala= {selectedSala}
             />
           )}
         </div>
