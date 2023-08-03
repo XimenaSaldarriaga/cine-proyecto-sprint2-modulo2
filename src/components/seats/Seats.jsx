@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './seats.scss';
 import HeaderNav from '../headerNav/HeaderNav';
 import Summary from '../summary/Summary';
+import { useParams, useLocation } from 'react-router-dom';
+import { getDataMovies } from '../../services/data';
+
 
 const svgContent = (
   <svg
@@ -40,12 +43,32 @@ const svgContent = (
 
 const Seats = () => {
 
+  const [movie, setMovie] = React.useState([]);
+  const [value, setValue] = useState(0);
+  const { id } = useParams();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const selectedDate = searchParams.get('date');
+  const selectedHour = searchParams.get('hour');
+  const selectedTheater = searchParams.get('theater');
+  const selectedSala = searchParams.get('sala');
+  const ticketPrice = 15000;
   const totalRows = 8;
   const seatsPerRow = 20;
   const totalSeats = totalRows * seatsPerRow;
   const seatsArray = new Array(totalSeats).fill(null);
+  const selecMovie = movie.find((movi) => movi.id === Number(id));
+  const currentPrice = ticketPrice * value;
 
   const [selectedButtons, setSelectedButtons] = useState([]);
+
+  useEffect(() => {
+    const fetchMoviesData = async () => {
+      const data = await getDataMovies();
+      setMovie(data);
+    };
+    fetchMoviesData();
+  }, []);
 
   const updateSelectedButtons = (selected) => {
     setSelectedButtons(selected);
@@ -86,47 +109,63 @@ const Seats = () => {
   return (
     <>
       <HeaderNav />
-      <div className="seats">
-        <h2 className="seats__subtitle">Selecciona tus asientos</h2>
-        <p className="seats__paragraph">Para cambiar tu lugar asignado da click en el asiento deseado</p>
-        <div className="seats__options">
-          <div className="seats__option">
-            <div className="seats__yellow">
-              {svgContent}
+
+      <div className='seats__div'>
+        <div className="seats">
+          <h2 className="seats__subtitle">Selecciona tus asientos</h2>
+          <p className="seats__paragraph">Para cambiar tu lugar asignado da click en el asiento deseado</p>
+          <div className="seats__options">
+            <div className="seats__option">
+              <div className="seats__yellow">
+                {svgContent}
+              </div>
+              <span>Seleccionado</span>
             </div>
-            <span>Seleccionado</span>
+            <div className="seats__option">
+              <div className="seats__red">
+                {svgContent}
+              </div>
+              <span>Ocupado</span>
+            </div>
+            <div className="seats__option">
+              <div className="seats__blue">
+                {svgContent}
+              </div>
+              <span>Disponible</span>
+            </div>
           </div>
-          <div className="seats__option">
-            <div className="seats__red">
-              {svgContent}
+          <hr />
+
+          <div className="seats__maps">
+            <div className="seats__map">
+              {seatsArray.map((_, index) => (
+                <button
+                  className={`seats__blue ${selectedButtons.includes(index) ? "seats__yellow" : ""}`}
+                  key={index}
+                  onClick={() => handleSeatClick(index)}
+                  id={index}
+                >
+                  <svg version="1.1" id={`seats-svg-${index}`} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" className="seat-svg">
+                    {svgContent}
+                  </svg>
+                  <span className="seats__number">{getSeatNumber(index)}</span>
+                </button>
+              ))}
             </div>
-            <span>Ocupado</span>
-          </div>
-          <div className="seats__option">
-            <div className="seats__blue">
-              {svgContent}
-            </div>
-            <span>Disponible</span>
           </div>
         </div>
-        <hr />
-
-        <div className="seats__maps">
-          <div className="seats__map">
-            {seatsArray.map((_, index) => (
-              <button
-                className={`seats__blue ${selectedButtons.includes(index) ? "seats__yellow" : ""}`}
-                key={index}
-                onClick={() => handleSeatClick(index)}
-                id={index}
-              >
-                <svg version="1.1" id={`seats-svg-${index}`} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" className="seat-svg">
-                  {svgContent}
-                </svg>
-                <span className="seats__number">{getSeatNumber(index)}</span>
-              </button>
-            ))}
-          </div>
+        <div className='seats__summary'>
+          {selecMovie && (
+            <Summary
+              data={selecMovie}
+              date={selectedDate}
+              hour={selectedHour}
+              theater={selectedTheater}
+              sala={selectedSala}
+              value={selectedButtons.length}
+              currentPrice={currentPrice}
+            />
+          )}
         </div>
       </div>
     </>

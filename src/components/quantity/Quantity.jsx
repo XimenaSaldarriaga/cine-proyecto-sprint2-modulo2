@@ -6,7 +6,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { getDataMovies } from '../../services/data';
 
 const Quantity = () => {
-  
+
   const [value, setValue] = useState(0);
 
   const handlePlus = () => {
@@ -29,7 +29,6 @@ const Quantity = () => {
   const selectedHour = searchParams.get('hour');
   const selectedTheater = searchParams.get('theater');
   const selectedSala = searchParams.get('sala');
-
   const ticketPrice = 15000;
   const currentPrice = ticketPrice * value;
 

@@ -1,12 +1,16 @@
 @mixin chairs__properties ($fill) {
     width: 20px;
     fill:$fill;
-    // color: white;
     font-size: 10px;
 }
 
-.seats {
+.seats__div {
+    display: flex;
+    justify-content: space-between;
     margin: 100px 180px;
+
+}
+.seats {
     width: 35%;
 
     &__options {
@@ -55,7 +59,9 @@
         display: flex;
       }
 
-
+      &__summary {
+        width: 40%;
+      }
 }
 
 hr {

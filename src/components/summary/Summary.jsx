@@ -4,6 +4,7 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const Summary = ({ data, theater, date, hour, sala, value, currentPrice }) => {
+  
   const navigate = useNavigate();
   let { id } = useParams();
 
