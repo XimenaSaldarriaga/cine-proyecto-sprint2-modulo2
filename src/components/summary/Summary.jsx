@@ -33,6 +33,7 @@ const Summary = ({ data, theater, date, hour, sala}) => {
           selectedTheater: theater,
           selectedSala: sala,
           quantity: value,
+          totalPrice: currentPrice,
         },
       });
     }
@@ -85,6 +86,10 @@ const Summary = ({ data, theater, date, hour, sala}) => {
           <div>
             <span className="summary__subtitle">Sala:</span>
             <span>{sala}</span>
+            <div>
+            <span className="summary__subtitle">Cantidad de boletos:</span>
+            <span>{value}</span>
+          </div>
           </div>
           <div>
             <span className="summary__subtitle">Asientos:</span>
