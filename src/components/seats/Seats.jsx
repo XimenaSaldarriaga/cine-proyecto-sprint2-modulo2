@@ -38,8 +38,10 @@ const svgContent = (
 );
 
 const Seats = () => {
-
-  const seatsArray = new Array(160).fill(null);
+  const totalRows = 8;
+  const seatsPerRow = 20;
+  const totalSeats = totalRows * seatsPerRow;
+  const seatsArray = new Array(totalSeats).fill(null);
 
   const [selectedButtons, setSelectedButtons] = useState([]);
 
@@ -55,12 +57,27 @@ const Seats = () => {
     }
   }, []);
 
+  const getSeatRowLetter = (index) => {
+    const row = Math.floor(index / seatsPerRow);
+    return String.fromCharCode('A'.charCodeAt(0) + row);
+  };
+
+  const getSeatColumnNumber = (index) => {
+    return (index % seatsPerRow) + 1;
+  };
+
   const handleSeatClick = (index) => {
     const updatedSelectedButtons = selectedButtons.includes(index)
       ? selectedButtons.filter((buttonIndex) => buttonIndex !== index)
       : [...selectedButtons, index];
 
     updateSelectedButtons(updatedSelectedButtons);
+  };
+
+  const getSeatNumber = (index) => {
+    const rowLetter = getSeatRowLetter(index);
+    const columnNumber = getSeatColumnNumber(index);
+    return `${rowLetter}${columnNumber}`;
   };
 
 
@@ -101,7 +118,10 @@ const Seats = () => {
                 onClick={() => handleSeatClick(index)}
                 id={index}
               >
-                {svgContent}
+                <svg version="1.1" id={`seats-svg-${index}`} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xmlSpace="preserve" className="seat-svg">
+                  {svgContent}
+                </svg>
+                <span className="seats__number">{getSeatNumber(index)}</span>
               </button>
             ))}
           </div>
@@ -112,6 +132,9 @@ const Seats = () => {
 };
 
 export default Seats;
+
+
+
 
 
 

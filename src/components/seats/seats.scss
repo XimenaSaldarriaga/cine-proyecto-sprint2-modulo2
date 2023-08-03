@@ -1,6 +1,8 @@
 @mixin chairs__properties ($fill) {
     width: 20px;
-    fill:$fill
+    fill:$fill;
+    // color: white;
+    font-size: 10px;
 }
 
 .seats {
@@ -51,8 +53,8 @@
 
       &__maps {
         display: flex;
-        justify-content: space-between;
       }
+
 
 }
 
@@ -61,4 +63,3 @@ hr {
     height: 3px;
     background: #a9a4a4;
 }
-
