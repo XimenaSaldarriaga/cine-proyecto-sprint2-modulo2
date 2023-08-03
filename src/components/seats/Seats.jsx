@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './seats.scss';
 import HeaderNav from '../headerNav/HeaderNav';
+import Summary from '../summary/Summary';
 
 const svgContent = (
   <svg
@@ -38,6 +39,7 @@ const svgContent = (
 );
 
 const Seats = () => {
+
   const totalRows = 8;
   const seatsPerRow = 20;
   const totalSeats = totalRows * seatsPerRow;
