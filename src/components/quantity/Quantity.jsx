@@ -24,7 +24,7 @@ const Quantity = () => {
   }, []);
 
   const selecMovie = movie.find((movi) => movi.id === Number(id));
-
+  
   return (
     <>
       <HeaderNav />

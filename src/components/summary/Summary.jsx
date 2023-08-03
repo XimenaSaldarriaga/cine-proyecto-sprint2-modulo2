@@ -2,64 +2,37 @@ import './summary.scss';
 import { URL_IMAGE } from '../../services/data';
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import SelectQuantity from '../selectQuantity/SelectQuantity';
 
-const Summary = ({ data, theater, date, hour, sala}) => {
 
-  const ticketPrice = 15000;
-  const [value, setValue] = useState(0);
-  const currentPrice = ticketPrice * value;
-  const navigate = useNavigate();
-  let { id } = useParams();
+  const Summary = ({ data, theater, date, hour, sala,}) => {
 
-  const handlePlus = () => {
-    if (value < 10) {
-      setValue(Math.min(value + 1, 10));
-    }
-  };
-
-  const handleMinus = () => {
-    if (value > 0) {
-      setValue(Math.max(value - 1, 0));
-    }
-  };
-
-  const handleContinuar = () => {
-    if (value >= 1) {
-      navigate(`/seats/${id}`, {
-        state: {
-          movieData: data,
-          selectedDate: date,
-          selectedHour: hour,
-          selectedTheater: theater,
-          selectedSala: sala,
-          quantity: value,
-          totalPrice: currentPrice,
-        },
-      });
-    }
-  };
+    const [value, setValue] = useState(0);
+    const ticketPrice = 15000;
+    const currentPrice = ticketPrice * value;
+    const navigate = useNavigate();
+    let { id } = useParams();
+  
+    const handleContinuar = () => {
+      if (value >= 1) {
+        navigate(`/seats/${id}`, {
+          state: {
+            movieData: data,
+            selectedDate: date,
+            selectedHour: hour,
+            selectedTheater: theater,
+            selectedSala: sala,
+            quantity: value,
+            totalPrice: currentPrice,
+          },
+        });
+      }
+    };
 
 
   return (
     <div className='summary__selectTickets'>
-    <div className='selectTickets'>
-    <h2 className='details__title'>Selecciona tus boletos</h2>
-    <span className='selectTickets__span'>Puedes comprar 10 boletos máximo por transacción</span>
-    <div className='selectTickets__info'>
-      <span className='selectTickets__quantity'>CANTIDAD</span>
-      <div className='selectTickets__numbers'>
-        <div className='selectTickets__buttons'>
-          <button className='selectTickets__button' onClick={handleMinus}>
-            -
-          </button>
-          <span className='selectTickets__number'>{value}</span>
-          <button className='selectTickets__button' onClick={handlePlus}>
-            +
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+       <SelectQuantity value={value} setValue={setValue} /> 
     <div className='summary'>
       <h2 className='summary__title'>Resumen de compra</h2>
       <div className='summary__details'>
