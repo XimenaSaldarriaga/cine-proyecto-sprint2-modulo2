@@ -1,3 +1,8 @@
+.summary__selectTickets {
+    display: flex;
+    justify-content: space-between;
+}
+
 .summary {
 
     background-color:rgba(235, 235, 235, 0.41);
@@ -59,4 +64,64 @@
         margin-top: 30px;
     }
 
+    }
+
+    .selectTickets {
+    
+        width: 40%;
+    
+         &__price {
+            font-size: 14px;
+            font-weight: 700;
+         }
+    
+         &__span {
+            margin-top: 20px;
+            font-size: 14px;
+         }
+    
+         &__info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 40px;
+         }
+    
+         &__buttons {
+            display: flex;
+            align-items: center;
+            border: 1px solid black;
+            gap: 3rem;
+            padding: 2px;
+            border-radius: 5px;
+    
+         }
+    
+         &__numbers {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+         }
+    
+         &__number {
+            font-size: 14px;
+            font-weight: 700;
+         }
+    
+         &__quantity {
+            font-size: 14px;
+            font-weight: 700;
+         }
+    
+         &__button {
+            background-color: #1c508d;
+            padding: 5px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            border-radius: 5px;
+         }
     }
