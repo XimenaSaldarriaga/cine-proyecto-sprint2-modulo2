@@ -33,7 +33,8 @@ const HoursMovie = ({ data}) => {
   };
 
   const handleHourClick = (hour) => {
-    setSelectedHour(hour);
+    const hourOnly = hour.split(" - ")[0];
+    setSelectedHour(hourOnly);
   };
 
   const navigate = useNavigate();
@@ -78,15 +79,18 @@ const HoursMovie = ({ data}) => {
           <div className="hours__options">
             {selectedTheater.dates
               .find((date) => date.date === selectedDate)
-              .hours.map((hour, index) => (
-                <button
-                  key={index}
-                  className={`hours__option ${selectedHour === hour ? 'selected' : ''}`}
-                  onClick={() => handleHourClick(hour)}
-                >
-                  {hour}
-                </button>
-              ))}
+              .hours.map((hour, index) => {
+                const hourOnly = hour.split(" - ")[0];
+                return (
+                  <button
+                    key={index}
+                    className={`hours__option ${selectedHour === hourOnly ? 'selected' : ''}`}
+                    onClick={() => handleHourClick(hour)}
+                  >
+                    {hourOnly}
+                  </button>
+                );
+              })}
           </div>
         </>
       )}

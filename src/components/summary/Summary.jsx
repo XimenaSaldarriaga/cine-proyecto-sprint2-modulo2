@@ -68,6 +68,14 @@ const Summary = ({ data, theater, date, hour}) => {
             <span className="summary__subtitle">Hora:</span>
             <span>{hour}</span>
           </div>
+          <div>
+            <span className="summary__subtitle">Sala:</span>
+            <span>{}</span>
+          </div>
+          <div>
+            <span className="summary__subtitle">Asientos:</span>
+            <span>{}</span>
+          </div>
         </div>
 
       </div>
