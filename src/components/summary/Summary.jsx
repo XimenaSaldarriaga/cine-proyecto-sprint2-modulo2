@@ -1,16 +1,15 @@
 import './summary.scss';
 import { URL_IMAGE } from '../../services/data';
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Summary = ({ data, theater, date, hour, sala}) => {
 
   const ticketPrice = 15000;
   const [value, setValue] = useState(0);
   const currentPrice = ticketPrice * value;
-
+  const navigate = useNavigate();
   let { id } = useParams();
-
 
   const handlePlus = () => {
     if (value < 10) {
@@ -21,6 +20,21 @@ const Summary = ({ data, theater, date, hour, sala}) => {
   const handleMinus = () => {
     if (value > 0) {
       setValue(Math.max(value - 1, 0));
+    }
+  };
+
+  const handleContinuar = () => {
+    if (value >= 1) {
+      navigate(`/seats/${id}`, {
+        state: {
+          movieData: data,
+          selectedDate: date,
+          selectedHour: hour,
+          selectedTheater: theater,
+          selectedSala: sala,
+          quantity: value,
+        },
+      });
     }
   };
 
@@ -84,7 +98,9 @@ const Summary = ({ data, theater, date, hour, sala}) => {
         <span>Total (IVA incluido): </span>
         <span className='selectTickets__price'>{currentPrice.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}</span>
       </div>
-      <button className='summary__button' style={{ opacity: value >= 1 ? 1 : 0.5 }}>Continuar</button>
+      <button className='summary__button' onClick={handleContinuar} style={{ opacity: value >= 1 ? 1 : 0.5 }}>
+      Continuar
+    </button>
     </div>
     </div>
   );

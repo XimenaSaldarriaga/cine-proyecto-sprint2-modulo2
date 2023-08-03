@@ -21,7 +21,7 @@ const HoursMovie = ({ data}) => {
       const { data } = await axios.get(URL_THEATERS);
       setTheaters(data);
     } catch (error) {
-      console.error('Error fetching theater data:', error);
+      console.error(error);
     }
   };
 
