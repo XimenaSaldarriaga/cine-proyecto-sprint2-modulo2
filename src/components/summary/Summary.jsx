@@ -10,7 +10,7 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice }) => {
 
   const handleContinuar = () => {
     if (value >= 1) {
-      navigate(`/seats/${id}?data=${data}?theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}`);
+      navigate(`/seats/${id}?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}`);
     }
   };
 
