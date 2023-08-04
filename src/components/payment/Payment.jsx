@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HeaderNav from '../headerNav/HeaderNav'
 import Summary from '../summary/Summary'
 import { useParams, useLocation } from 'react-router-dom';
+import { getDataMovies } from '../../services/data';
 
 const Payment = () => {
 
@@ -17,12 +18,18 @@ const Payment = () => {
   const [movie, setMovie] = React.useState([]);
   const { id } = useParams();
   const ticketPrice = 15000;
-  const totalRows = 8;
-  const seatsPerRow = 20;
-  const totalSeats = totalRows * seatsPerRow;
-  const seatsArray = new Array(totalSeats).fill(null);
   const selecMovie = movie.find((movi) => movi.id === Number(id));
   const currentPrice = ticketPrice * value;
+
+  useEffect(() => {
+    const fetchMoviesData = async () => {
+      const data = await getDataMovies();
+      setMovie(data);
+    };
+    fetchMoviesData();
+  }, []);
+
+
 
   return (
     <div>
@@ -41,6 +48,7 @@ const Payment = () => {
               currentPrice={currentPrice}
               selectedButtons={selectedButtons}
               getSeatLetterAndNumber={getSeatLetterAndNumber}
+              fromSeats={fromSeats}
             />
           )}
     </div>
