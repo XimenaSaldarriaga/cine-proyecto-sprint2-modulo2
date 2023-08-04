@@ -2,10 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './quantity.scss';
 import HeaderNav from '../headerNav/HeaderNav';
 import Summary from '../summary/Summary';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate  } from 'react-router-dom';
 import { getDataMovies } from '../../services/data';
 
 const Quantity = () => {
+
+  const navigate = useNavigate()
+
+  const handleContinuar = (destination) => {
+    navigate(destination);
+  };
 
   const [value, setValue] = useState(0);
 
@@ -76,6 +82,8 @@ const Quantity = () => {
               sala={selectedSala}
               value={value}
               currentPrice={currentPrice}
+              fromSeats={false}
+              handleContinuar={handleContinuar}
             />
           )}
         </div>

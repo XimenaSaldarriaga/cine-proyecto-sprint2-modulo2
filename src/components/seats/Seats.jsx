@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './seats.scss';
 import HeaderNav from '../headerNav/HeaderNav';
 import Summary from '../summary/Summary';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getDataMovies } from '../../services/data';
 
 
@@ -43,6 +43,8 @@ const svgContent = (
 
 const Seats = () => {
 
+  const navigate = useNavigate();
+
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const date = searchParams.get('date');
@@ -60,6 +62,10 @@ const Seats = () => {
   const selecMovie = movie.find((movi) => movi.id === Number(id));
   const currentPrice = ticketPrice * value;
   const [selectedButtons, setSelectedButtons] = useState([]);
+
+  const handleContinuar = (destination) => {
+    navigate(destination);
+  };
 
   useEffect(() => {
     const fetchMoviesData = async () => {
@@ -185,6 +191,8 @@ const Seats = () => {
               currentPrice={currentPrice}
               selectedButtons={selectedButtons}
               getSeatLetterAndNumber={getSeatLetterAndNumber}
+              fromSeats={true}
+              handleContinuar={handleContinuar}
             />
           )}
         </div>

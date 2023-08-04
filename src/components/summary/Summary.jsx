@@ -3,14 +3,16 @@ import { URL_IMAGE } from '../../services/data';
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber }) => {
+const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber, fromSeats, handleContinuar }) => {
   
   const navigate = useNavigate();
   let { id } = useParams();
 
-  const handleContinuar = () => {
-    if (value >= 1) {
-      navigate(`/seats/${id}?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}`);
+  const handleContinue = () => {
+    if (fromSeats && value >= 1 ) {
+      handleContinuar(`/payment?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}`);
+    } else {
+      handleContinuar(`/seats/${id}?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}`);
     }
   };
 
@@ -63,7 +65,7 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selecte
             {currentPrice.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}
           </span>
         </div>
-        <button className='summary__button' onClick={handleContinuar} style={{ opacity: value >= 1 ? 1 : 0.5 }}>
+        <button className='summary__button' onClick={handleContinue} style={{ opacity: value >= 1 ? 1 : 0.5 }}>
           Continuar
         </button>
       </div>
