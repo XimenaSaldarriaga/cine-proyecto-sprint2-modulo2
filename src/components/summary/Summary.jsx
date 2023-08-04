@@ -3,7 +3,7 @@ import { URL_IMAGE } from '../../services/data';
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const Summary = ({ data, theater, date, hour, sala, value, currentPrice }) => {
+const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber }) => {
   
   const navigate = useNavigate();
   let { id } = useParams();
@@ -50,7 +50,7 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice }) => {
             </div>
             <div>
               <span className='summary__subtitle'>Asientos:</span>
-              <span>{}</span>
+              {selectedButtons.map((buttonIndex) => getSeatLetterAndNumber(buttonIndex)).join(', ')}
             </div>
           </div>
         </div>

@@ -45,13 +45,11 @@ const Seats = () => {
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-
   const date = searchParams.get('date');
   const hour = searchParams.get('hour');
   const theater = searchParams.get('theater');
   const sala = searchParams.get('sala');
   const value = searchParams.get('value');
-
   const [movie, setMovie] = React.useState([]);
   const { id } = useParams();
   const ticketPrice = 15000;
@@ -93,18 +91,38 @@ const Seats = () => {
   };
 
   const handleSeatClick = (index) => {
-    const updatedSelectedButtons = selectedButtons.includes(index)
-      ? selectedButtons.filter((buttonIndex) => buttonIndex !== index)
-      : [...selectedButtons, index];
-
-    updateSelectedButtons(updatedSelectedButtons);
+    if (selectedButtons.length < value) {
+      const seatIsSelected = selectedButtons.includes(index);
+  
+      if (seatIsSelected) {
+        const updatedSelectedButtons = selectedButtons.filter(
+          (buttonIndex) => buttonIndex !== index
+        );
+        updateSelectedButtons(updatedSelectedButtons);
+      } else {
+        const updatedSelectedButtons = [...selectedButtons, index];
+        updateSelectedButtons(updatedSelectedButtons);
+      }
+    } else if (selectedButtons.includes(index)) {
+      const updatedSelectedButtons = selectedButtons.filter(
+        (buttonIndex) => buttonIndex !== index
+      );
+      updateSelectedButtons(updatedSelectedButtons);
+    }
   };
 
   const getSeatNumber = (index) => {
-    const rowLetter = getSeatRowLetter(index);
-    const columnNumber = getSeatColumnNumber(index);
+    const rowLetter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(index / seatsPerRow));
+    const columnNumber = (index % seatsPerRow) + 1;
     return `${rowLetter}${columnNumber}`;
   };
+
+  const getSeatLetterAndNumber = (index) => {
+    const rowLetter = String.fromCharCode('A'.charCodeAt(0) + Math.floor(index / seatsPerRow));
+    const columnNumber = (index % seatsPerRow) + 1;
+    return `${rowLetter}${columnNumber}`;
+  };
+
 
 
   return (
@@ -165,6 +183,8 @@ const Seats = () => {
               sala={sala}
               value={value}
               currentPrice={currentPrice}
+              selectedButtons={selectedButtons}
+              getSeatLetterAndNumber={getSeatLetterAndNumber}
             />
           )}
         </div>
