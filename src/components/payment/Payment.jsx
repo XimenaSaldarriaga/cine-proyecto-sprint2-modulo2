@@ -43,7 +43,7 @@ const Payment = () => {
       <HeaderNav />
       <div className='payment'>
         <div className='payment__pay'>
-          <h2 className='payment__subtitle'>Informacion Personal</h2>
+          <h2 className='payment__subtitle'>Información Personal</h2>
           <p className='payment__paragraph'>Completa los datos del formulario para realizar el pago</p>
 
           <form className='payment__form' onSubmit={handleSubmit(form)}>
@@ -73,7 +73,7 @@ const Payment = () => {
             </div>
             <div className='payment__date'>
               <div className='payment__div'>
-                <label className='payment__label'>Fecha de caducudad</label>
+                <label className='payment__label'>Fecha de caducidad</label>
                 <input className='payment__input' type="text" placeholder='MM/YY' {...register('fecha de caducidad', {
                   required: true
                 })} />
