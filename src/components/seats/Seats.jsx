@@ -44,7 +44,6 @@ const svgContent = (
 const Seats = () => {
 
   const navigate = useNavigate();
-
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const date = searchParams.get('date');

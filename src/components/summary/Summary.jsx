@@ -9,13 +9,13 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selecte
   let { id } = useParams();
 
   const handleContinue = () => {
-    if (fromSeats && value >= 1 ) {
-      handleContinuar(`/payment?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}`);
-    } else {
+    if (fromSeats && selectedButtons.length == value) {
+      handleContinuar(`/payment?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}&selectedButtons=${selectedButtons}&getSeatLetterAndNumber=${getSeatLetterAndNumber}`);
+    } else if (!fromSeats) {
       handleContinuar(`/seats/${id}?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}`);
+    } else {
     }
   };
-
 
   return (
     <div className='summary__selectTickets'>
