@@ -8,6 +8,7 @@ import HeaderNav from '../headerNav/HeaderNav';
 import './details.scss';
 
 const Details = ({ navigate }) => {
+  
   const [movies, setMovies] = useState([]);
   const [selectedTheater, setSelectedTheater] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);

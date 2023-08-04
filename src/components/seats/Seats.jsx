@@ -43,15 +43,17 @@ const svgContent = (
 
 const Seats = () => {
 
-  const [movie, setMovie] = React.useState([]);
-  const [value, setValue] = useState(0);
-  const { id } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const selectedDate = searchParams.get('date');
-  const selectedHour = searchParams.get('hour');
-  const selectedTheater = searchParams.get('theater');
-  const selectedSala = searchParams.get('sala');
+
+  const date = searchParams.get('date');
+  const hour = searchParams.get('hour');
+  const theater = searchParams.get('theater');
+  const sala = searchParams.get('sala');
+  const value = searchParams.get('value');
+
+  const [movie, setMovie] = React.useState([]);
+  const { id } = useParams();
   const ticketPrice = 15000;
   const totalRows = 8;
   const seatsPerRow = 20;
@@ -154,13 +156,13 @@ const Seats = () => {
           </div>
         </div>
         <div className='seats__summary'>
-          {selecMovie && (
+        {selecMovie && (
             <Summary
               data={selecMovie}
-              date={selectedDate}
-              hour={selectedHour}
-              theater={selectedTheater}
-              sala={selectedSala}
+              date={date}
+              hour={hour}
+              theater={theater}
+              sala={sala}
               value={value}
               currentPrice={currentPrice}
             />
