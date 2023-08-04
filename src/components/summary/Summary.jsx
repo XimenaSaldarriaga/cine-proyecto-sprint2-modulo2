@@ -48,10 +48,12 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selecte
                 <span>{value}</span>
               </div>
             </div>
+            {selectedButtons && selectedButtons.length > 0 && (
             <div>
               <span className='summary__subtitle'>Asientos:</span>
               {selectedButtons.map((buttonIndex) => getSeatLetterAndNumber(buttonIndex)).join(', ')}
             </div>
+          )}
           </div>
         </div>
         <p className='summary__paragraph'>Se realizará un cargo por servicio por cada boleto dentro de la orden</p>

@@ -69,10 +69,6 @@ const Seats = () => {
     fetchMoviesData();
   }, []);
 
-  const updateSelectedButtons = (selected) => {
-    setSelectedButtons(selected);
-    localStorage.setItem('selectedButtons', JSON.stringify(selected));
-  };
 
   useEffect(() => {
     const storedSelectedButtons = JSON.parse(localStorage.getItem('selectedButtons'));
@@ -80,6 +76,10 @@ const Seats = () => {
       setSelectedButtons(storedSelectedButtons);
     }
   }, []);
+
+  const updateSelectedButtons = (selected) => {
+    setSelectedButtons(selected);
+  };
 
   const getSeatRowLetter = (index) => {
     const row = Math.floor(index / seatsPerRow);
