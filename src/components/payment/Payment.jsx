@@ -54,7 +54,7 @@ const Payment = () => {
                   required: true,
                   pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                 })} />
-                { errors.correo?.type ==='pattern' && <p>correo inválido</p>}
+                { errors.correo?.type ==='pattern' && <p className='payment__errors'>correo inválido</p>}
             </div>
             <div className='payment__div'>
               <label className='payment__label'>Nombre en la tarjeta</label>
@@ -65,11 +65,12 @@ const Payment = () => {
             </div>
             <div className='payment__div'>
               <label className='payment__label'>Número de la tarjeta</label>
-              <input className='payment__input' type="text" placeholder='1234 1234 1234 1234' {...register('numero de la tarjeta', {
+              <input className='payment__input payment__image' type="text" placeholder='1234 1234 1234 1234' {...register('numero', {
                 required: true,
                 maxLength: 16,
                 minLength: 16,
               })} />
+              { errors.numero?.type ==='minLength' && <p className='payment__errors'>La tarjeta debe tener 16 dígitos</p>}
             </div>
             <div className='payment__date'>
               <div className='payment__div'>

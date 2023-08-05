@@ -54,9 +54,21 @@
     }
 
     &__input::placeholder {
+
         font-size: 10px;
         color: gray;
     }
 
+    &__image {
+        background-image: url(../../images/visa.png),url(../../images/master.png),url(../../images/american.png);
+        background-repeat: no-repeat;
+        background-size: 30px, 25px, 25px; 
+        background-position: 75%, 85%, 95%;
+    }
+
+    &__errors {
+        color: red;
+        font-size: 12px;
+    }
     
 }
