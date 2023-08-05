@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import HeaderNav from '../headerNav/HeaderNav'
 import Summary from '../summary/Summary'
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getDataMovies } from '../../services/data';
 import { useForm } from 'react-hook-form';
 import './payment.scss'
@@ -13,7 +13,7 @@ const Payment = () => {
   const form = (dataForm) => {
     console.log(dataForm)
   }
-
+  const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const date = searchParams.get('date');
@@ -36,6 +36,8 @@ const Payment = () => {
     };
     fetchMoviesData();
   }, []);
+
+  console.log(date, hour, theater, sala, value, currentPrice, )
 
 
   return (
@@ -103,7 +105,6 @@ const Payment = () => {
               currentPrice={currentPrice}
               selectedButtons={selectedButtons}
               getSeatLetterAndNumber={getSeatLetterAndNumber}
-              fromSeats={fromSeats}
             />
           )}
         </div>

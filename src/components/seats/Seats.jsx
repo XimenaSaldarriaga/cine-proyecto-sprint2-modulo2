@@ -43,6 +43,7 @@ const svgContent = (
 
 const Seats = () => {
 
+  const [selectedButtons, setSelectedButtons] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -60,7 +61,10 @@ const Seats = () => {
   const seatsArray = new Array(totalSeats).fill(null);
   const selecMovie = movie.find((movi) => movi.id === Number(id));
   const currentPrice = ticketPrice * value;
-  const [selectedButtons, setSelectedButtons] = useState([]);
+  const [seatSummary, setSeatSummary] = useState('');
+
+
+  console.log(date, hour, theater, sala, value, selecMovie, currentPrice )
 
   const handleContinuar = (destination) => {
     navigate(destination);
@@ -128,6 +132,11 @@ const Seats = () => {
     return `${rowLetter}${columnNumber}`;
   };
 
+  useEffect(() => {
+    const summary = selectedButtons.map((buttonIndex) => getSeatLetterAndNumber(buttonIndex)).join(', ');
+    setSeatSummary(summary);
+  }, [selectedButtons, getSeatLetterAndNumber]);
+
 
 
   return (
@@ -190,6 +199,7 @@ const Seats = () => {
               currentPrice={currentPrice}
               selectedButtons={selectedButtons}
               getSeatLetterAndNumber={getSeatLetterAndNumber}
+              seatSummary={seatSummary}
               fromSeats={true}
               handleContinuar={handleContinuar}
             />

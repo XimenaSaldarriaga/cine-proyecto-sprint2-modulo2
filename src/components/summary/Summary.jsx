@@ -1,21 +1,24 @@
 import './summary.scss';
 import { URL_IMAGE } from '../../services/data';
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber, fromSeats, handleContinuar }) => {
+const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber, fromSeats, handleContinuar, seatSummary}) => {
   
   const navigate = useNavigate();
+
   let { id } = useParams();
+
 
   const handleContinue = () => {
     if (fromSeats && selectedButtons.length == value) {
-      handleContinuar(`/payment?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}&selectedButtons=${selectedButtons}&getSeatLetterAndNumber=${getSeatLetterAndNumber}&fromSeats=${fromSeats}`);
+      handleContinuar(`/payment?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}&selectedButtons=${selectedButtons}&getSeatLetterAndNumber=${getSeatLetterAndNumber}&fromSeats=${fromSeats}&seatSummary=${seatSummary}`);
     } else if (!fromSeats && value >= 1) {
       handleContinuar(`/seats/${id}?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}`);
     } else {
     }
   };
+
 
 
   return (
@@ -54,7 +57,7 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selecte
             {selectedButtons && selectedButtons.length > 0 && (
             <div>
               <span className='summary__subtitle'>Asientos:</span>
-              {selectedButtons.map((buttonIndex) => getSeatLetterAndNumber(buttonIndex)).join(', ')}
+              {seatSummary}
             </div>
           )}
           </div>
