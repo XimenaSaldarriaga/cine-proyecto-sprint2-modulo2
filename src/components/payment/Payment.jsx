@@ -22,6 +22,7 @@ const Payment = () => {
   const sala = searchParams.get('sala');
   const value = searchParams.get('value');
   const selectedButtons = searchParams.get('selectedButtons');
+  const seatSummary= searchParams.get('seatSummary')
   const getSeatLetterAndNumber = searchParams.get('getSeatLetterAndNumber')
   const [movie, setMovie] = React.useState([]);
   const { id } = useParams();
@@ -37,7 +38,7 @@ const Payment = () => {
     fetchMoviesData();
   }, []);
 
-  console.log(date, hour, theater, sala, value, currentPrice, )
+  console.log(date, hour, theater, sala, value, currentPrice, seatSummary)
 
 
   return (
@@ -105,6 +106,7 @@ const Payment = () => {
               currentPrice={currentPrice}
               selectedButtons={selectedButtons}
               getSeatLetterAndNumber={getSeatLetterAndNumber}
+              seatSummary={seatSummary}
             />
           )}
         </div>

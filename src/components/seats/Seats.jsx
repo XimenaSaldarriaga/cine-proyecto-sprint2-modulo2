@@ -64,7 +64,7 @@ const Seats = () => {
   const [seatSummary, setSeatSummary] = useState('');
 
 
-  console.log(date, hour, theater, sala, value, selecMovie, currentPrice )
+  console.log(date, hour, theater, sala, value, selecMovie, currentPrice, seatSummary)
 
   const handleContinuar = (destination) => {
     navigate(destination);
