@@ -81,7 +81,7 @@ const Payment = () => {
               </div>
               <div className='payment__div'>
                 <label className='payment__label'>CVV</label>
-                <input className='payment__input' type="text" placeholder='Enter CVV' {...register('cvv', {
+                <input className='payment__input payment__alert' type="text" placeholder='Enter CVV' {...register('cvv', {
                   required: true,
                   maxLength: 3,
                   minLength: 3,

@@ -71,4 +71,10 @@
         font-size: 12px;
     }
     
+    &__alert {
+        background-image: url(../../images/alert.svg);
+        background-repeat: no-repeat;
+        background-size: 12px;
+        background-position: 90%;
+    }
 }
