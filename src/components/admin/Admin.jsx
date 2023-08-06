@@ -1,8 +1,13 @@
 import React from 'react'
+import HeaderNav from '../headerNav/HeaderNav'
+
 
 const Admin = () => {
   return (
-    <div>Admin</div>
+    <div>
+      <HeaderNav />
+      <div>Administrador</div>
+    </div>
   )
 }
 

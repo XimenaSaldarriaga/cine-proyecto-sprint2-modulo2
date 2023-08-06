@@ -1,11 +1,30 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './selectHeader.scss';
 import SelectDate from '../selectDate/SelectDate';
 import SearchMovie from '../searchMovie/SearchMovie';
+import { URL_USERS } from '../../services/data';
+import { useNavigate } from 'react-router-dom'; 
+
 
 const SelectHeader = () => {
+
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [users, setUsers] = useState([]);
+  const navigate = useNavigate(); 
+
+  useEffect(() => {
+    axios.get(URL_USERS)
+      .then(response => {
+        setUsers(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching user data:', error);
+      });
+  }, []);
 
   const handleImageClick = () => {
     setShowLoginForm(true);
@@ -19,6 +38,26 @@ const SelectHeader = () => {
     setRememberMe(event.target.checked);
   };
 
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLoginFormSubmit = (event) => {
+    event.preventDefault();
+
+    const user = users.find((user) => user.email === email && user.password === password);
+
+    if (user) {
+      navigate('/admin');
+    } else {
+      console.log('Invalid login');
+    }
+  };
+
   return (
     <div className='selectHeader'>
       {showLoginForm && (
@@ -30,14 +69,34 @@ const SelectHeader = () => {
             <div className='selectHeader__loginForm'>
               <h1>Bienvenido</h1>
               <h2>Inicia Sesión</h2>
-              <form className='selectHeader__form'>
+              <form className='selectHeader__form' onSubmit={handleLoginFormSubmit}>
                 <div>
-                  <label className='selectHeader__labelform' htmlFor='email'>Correo electrónico</label>
-                  <input className='selectHeader__inputform' type='email' id='email' name='email' required />
+                  <label className='selectHeader__labelform' htmlFor='email'>
+                    Correo electrónico
+                  </label>
+                  <input
+                    className='selectHeader__inputform'
+                    type='email'
+                    id='email'
+                    name='email'
+                    value={email}
+                    onChange={handleEmailChange}
+                    required
+                  />
                 </div>
                 <div>
-                  <label className='selectHeader__labelform' htmlFor='password'>Contraseña</label>
-                  <input className='selectHeader__inputform' type='password' id='password' name='password' required />
+                  <label className='selectHeader__labelform' htmlFor='password'>
+                    Contraseña
+                  </label>
+                  <input
+                    className='selectHeader__inputform'
+                    type='password'
+                    id='password'
+                    name='password'
+                    value={password}
+                    onChange={handlePasswordChange}
+                    required
+                  />
                 </div>
                 <div className='selectHeader__rememberMe'>
                   <input
@@ -48,9 +107,13 @@ const SelectHeader = () => {
                     checked={rememberMe}
                     onChange={handleRememberMeChange}
                   />
-                  <label className='selectHeader__labelform' htmlFor='rememberMe'>Recordarme</label>
+                  <label className='selectHeader__labelform' htmlFor='rememberMe'>
+                    Recordarme
+                  </label>
                 </div>
-                <button className='selectHeader__login' type='submit'>Iniciar sesión</button>
+                <button className='selectHeader__login' type='submit'>
+                  Iniciar sesión
+                </button>
               </form>
             </div>
           </div>
@@ -69,6 +132,8 @@ const SelectHeader = () => {
 };
 
 export default SelectHeader;
+
+
 
 
 

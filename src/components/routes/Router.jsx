@@ -7,6 +7,7 @@ import Seats from '../seats/Seats'
 import Payment from '../payment/Payment'
 import Transaction from '../transaction/Transaction'
 import Download from '../download/Download'
+import Admin from '../admin/Admin'
 import Links from '../links/Links'
 
 const Router = () => {
@@ -21,6 +22,7 @@ const Router = () => {
           <Route path="/payment" element={<Payment />} />
           <Route path="/transaction" element={<Transaction />} />
           <Route path="/download" element={<Download />} />
+          <Route path="/admin" element={<Admin />} />
         </Route>
       </Routes>
     </BrowserRouter>
