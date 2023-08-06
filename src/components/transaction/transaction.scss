@@ -1,6 +1,9 @@
 .transaction {
 
     margin: 100px 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 
     &__ok {
         display: flex;
@@ -20,4 +23,45 @@
     &__succes {
         font-weight: 500;
     }
+    
+    &__subtitle {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__h2 {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    &__bill {
+        border-radius: 5px;
+        background-color: #1465bc16;
+        color: #1c508d;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__data {
+        display: flex;
+        gap: 10rem;
+    }
+
+    &__up {
+        font-size: 14px;
+        color: gray;
+    }
+
+    &__down {
+        font-size: 14px;
+    }
+
 }
