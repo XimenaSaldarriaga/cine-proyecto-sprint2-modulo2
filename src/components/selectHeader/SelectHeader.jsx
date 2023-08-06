@@ -22,30 +22,35 @@ const SelectHeader = () => {
   return (
     <div className='selectHeader'>
       {showLoginForm && (
-        <div className='loginFormOverlay'>
-          <div className='loginFormContainer'>
-            <button className='closeButton' onClick={closeLoginForm}>
+        <div className='selectHeader__loginFormOverlay'>
+          <div className='selectHeader__loginFormContainer'>
+            <button className='selectHeader__closeButton' onClick={closeLoginForm}>
               <span>X</span>
             </button>
-            <div className='loginForm'>
+            <div className='selectHeader__loginForm'>
               <h1>Bienvenido</h1>
               <h2>Inicia Sesión</h2>
-              <form>
-                <label htmlFor='email'>Correo electrónico</label>
-                <input type='email' id='email' name='email' required />
-                <label htmlFor='password'>Contraseña</label>
-                <input type='password' id='password' name='password' required />
-                <div className='rememberMe'>
+              <form className='selectHeader__form'>
+                <div>
+                  <label className='selectHeader__labelform' htmlFor='email'>Correo electrónico</label>
+                  <input className='selectHeader__inputform' type='email' id='email' name='email' required />
+                </div>
+                <div>
+                  <label className='selectHeader__labelform' htmlFor='password'>Contraseña</label>
+                  <input className='selectHeader__inputform' type='password' id='password' name='password' required />
+                </div>
+                <div className='selectHeader__rememberMe'>
                   <input
+                    className='selectHeader__checkbox'
                     type='checkbox'
                     id='rememberMe'
                     name='rememberMe'
                     checked={rememberMe}
                     onChange={handleRememberMeChange}
                   />
-                  <label htmlFor='rememberMe'>Recordarme</label>
+                  <label className='selectHeader__labelform' htmlFor='rememberMe'>Recordarme</label>
                 </div>
-                <button type='submit'>Iniciar sesión</button>
+                <button className='selectHeader__login' type='submit'>Iniciar sesión</button>
               </form>
             </div>
           </div>
