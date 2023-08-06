@@ -1,34 +1,34 @@
-import React, { useEffect } from 'react';
-import HeaderNav from '../headerNav/HeaderNav'
-import Summary from '../summary/Summary'
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import HeaderNav from '../headerNav/HeaderNav';
+import Summary from '../summary/Summary';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getDataMovies } from '../../services/data';
 import { useForm } from 'react-hook-form';
-import './payment.scss'
+import './payment.scss';
 
 const Payment = () => {
-
   const { register, formState: { errors }, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const form = (dataForm) => {
-    console.log(dataForm)
-  }
+    console.log(dataForm);
+  };
+
+  const [selecMovie, setSelecMovie] = useState(null);
 
   const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const date = searchParams.get('date');
-  const hour = searchParams.get('hour');
-  const theater = searchParams.get('theater');
-  const sala = searchParams.get('sala');
-  const value = searchParams.get('value');
-  const selectedButtons = searchParams.get('selectedButtons');
-  const seatSummary= searchParams.get('seatSummary')
-  const getSeatLetterAndNumber = searchParams.get('getSeatLetterAndNumber')
-  const [movie, setMovie] = React.useState([]);
-  let { id } = useParams();
-  const ticketPrice = 15000;
-  const selecMovie = movie.find((movi) => movi.id === Number(id));
-  const currentPrice = ticketPrice * value;
+  const queryParams = new URLSearchParams(location.search);
+  const data = queryParams.get('data');
+  const theater = queryParams.get('theater');
+  const date = queryParams.get('date');
+  const hour = queryParams.get('hour');
+  const sala = queryParams.get('sala');
+  const value = queryParams.get('value');
+  const currentPrice = queryParams.get('currentPrice');
+  const selectedButtons = queryParams.get('selectedButtons');
+  const getSeatLetterAndNumber = queryParams.get('getSeatLetterAndNumber');
+  const fromSeats = queryParams.get('fromSeats') === 'true';
+  const seatSummary = queryParams.get('seatSummary');
 
   useEffect(() => {
     const fetchMoviesData = async () => {
@@ -38,7 +38,7 @@ const Payment = () => {
     fetchMoviesData();
   }, []);
 
-  console.log(date, hour, theater, sala, value, currentPrice, seatSummary, )
+  console.log(data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber, fromSeats, seatSummary);
 
 
   return (
@@ -57,7 +57,7 @@ const Payment = () => {
                   required: true,
                   pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                 })} />
-                { errors.correo?.type ==='pattern' && <p className='payment__errors'>correo inválido</p>}
+              {errors.correo?.type === 'pattern' && <p className='payment__errors'>correo inválido</p>}
             </div>
             <div className='payment__div'>
               <label className='payment__label'>Nombre en la tarjeta</label>
@@ -73,7 +73,7 @@ const Payment = () => {
                 maxLength: 16,
                 minLength: 16,
               })} />
-              { errors.numero?.type ==='minLength' && <p className='payment__errors'>La tarjeta debe tener 16 dígitos</p>}
+              {errors.numero?.type === 'minLength' && <p className='payment__errors'>La tarjeta debe tener 16 dígitos</p>}
             </div>
             <div className='payment__date'>
               <div className='payment__div'>
@@ -95,20 +95,18 @@ const Payment = () => {
           </form>
         </div>
         <div className='payment__summary'>
-          {selecMovie && (
-            <Summary
-              data={selecMovie}
-              date={date}
-              hour={hour}
-              theater={theater}
-              sala={sala}
-              value={value}
-              currentPrice={currentPrice}
-              selectedButtons={selectedButtons}
-              getSeatLetterAndNumber={getSeatLetterAndNumber}
-              seatSummary={seatSummary}
-            />
-          )}
+          <Summary
+            data={selecMovie}
+            date={date}
+            hour={hour}
+            theater={theater}
+            sala={sala}
+            value={value}
+            currentPrice={currentPrice}
+            selectedButtons={selectedButtons}
+            getSeatLetterAndNumber={getSeatLetterAndNumber}
+            seatSummary={seatSummary}
+          />
         </div>
       </div>
     </>

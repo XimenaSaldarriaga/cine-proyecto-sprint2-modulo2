@@ -10,7 +10,6 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selecte
   let { id } = useParams();
 
 
-
   const handleContinue = () => {
     if (fromSeats && selectedButtons.length == value) {
       handleContinuar(`/payment?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}&selectedButtons=${selectedButtons}&getSeatLetterAndNumber=${getSeatLetterAndNumber}&fromSeats=${fromSeats}&seatSummary=${seatSummary}`);
@@ -20,20 +19,19 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selecte
     }
   };
 
-
   return (
     <div className='summary__selectTickets'>
       <div className='summary'>
         <h2 className='summary__title'>Resumen de compra</h2>
         <div className='summary__details'>
-          <div className='summary__image'>
+          {/* <div className='summary__image'>
             <img src={`${URL_IMAGE}${data.poster_path}`} alt='' />
-          </div>
+          </div> */}
           <div className='summary__info'>
-            <div>
+            {/* <div>
               <span className='summary__subtitle'>Pelicula:</span>
               <span>{data.title}</span>
-            </div>
+            </div> */}
             <div>
               <span className='summary__subtitle'>Cinema:</span>
               <span>{theater}</span>
