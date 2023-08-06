@@ -20,10 +20,13 @@ const HeaderNav = ({ onFilterByGenre }) => {
         />
       </Link>
       <nav className='navbar'>
+        <button className='navbar__button' onClick={() => onFilterByGenre()}>En Cartelera</button>
         <button className='navbar__button' onClick={() => onFilterByGenre(28)}>Acción</button>
         <button className='navbar__button' onClick={() => onFilterByGenre(27)}>Terror</button>
         <button className='navbar__button' onClick={() => onFilterByGenre(878)}>Ciencia ficción</button>
         <button className='navbar__button' onClick={() => onFilterByGenre(35)}>Comedia</button>
+        <button className='navbar__button' onClick={() => onFilterByGenre(18)}>Drama</button>
+        <button className='navbar__button' onClick={() => onFilterByGenre(12)}>Aventura</button>
       </nav>
       <SelectHeader />
     </div>
