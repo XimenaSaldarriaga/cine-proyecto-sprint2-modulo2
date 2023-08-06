@@ -53,18 +53,15 @@ const Seats = () => {
   const sala = searchParams.get('sala');
   const value = searchParams.get('value');
   const [movie, setMovie] = React.useState([]);
-  const { id } = useParams();
+  let { id } = useParams();
   const ticketPrice = 15000;
   const totalRows = 8;
   const seatsPerRow = 20;
   const totalSeats = totalRows * seatsPerRow;
   const seatsArray = new Array(totalSeats).fill(null);
-  const selecMovie = movie.find((movi) => movi.id === Number(id));
   const currentPrice = ticketPrice * value;
   const [seatSummary, setSeatSummary] = useState('');
 
-
-  console.log(date, hour, theater, sala, value, selecMovie, currentPrice, seatSummary)
 
   const handleContinuar = (destination) => {
     navigate(destination);
@@ -136,6 +133,10 @@ const Seats = () => {
     const summary = selectedButtons.map((buttonIndex) => getSeatLetterAndNumber(buttonIndex)).join(', ');
     setSeatSummary(summary);
   }, [selectedButtons, getSeatLetterAndNumber]);
+
+  let selecMovie = movie.find((movi) => movi.id === Number(id));
+
+  console.log(date, hour, theater, sala, value, selecMovie, currentPrice, seatSummary)
 
 
 

@@ -28,7 +28,7 @@ const Quantity = () => {
   };
 
   const [movie, setMovie] = React.useState([]);
-  const { id } = useParams();
+  let { id } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const selectedDate = searchParams.get('date');
@@ -46,7 +46,7 @@ const Quantity = () => {
     fetchMoviesData();
   }, []);
 
-  const selecMovie = movie.find((movi) => movi.id === Number(id));
+  let selecMovie = movie.find((movi) => movi.id === Number(id));
 
   
 

@@ -1,0 +1,23 @@
+.transaction {
+
+    margin: 100px 180px;
+
+    &__ok {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 25px;
+        background-color: rgba(245, 240, 234, 0.747);
+    }
+
+    &__img {
+        width: 30px;
+        object-fit: contain;
+    }
+
+    &__succes {
+        font-weight: 500;
+    }
+}

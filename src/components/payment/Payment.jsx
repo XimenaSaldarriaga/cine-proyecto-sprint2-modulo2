@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import HeaderNav from '../headerNav/HeaderNav'
 import Summary from '../summary/Summary'
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ const Payment = () => {
   const form = (dataForm) => {
     console.log(dataForm)
   }
-  const navigate = useNavigate();
+
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const date = searchParams.get('date');
@@ -25,7 +25,7 @@ const Payment = () => {
   const seatSummary= searchParams.get('seatSummary')
   const getSeatLetterAndNumber = searchParams.get('getSeatLetterAndNumber')
   const [movie, setMovie] = React.useState([]);
-  const { id } = useParams();
+  let { id } = useParams();
   const ticketPrice = 15000;
   const selecMovie = movie.find((movi) => movi.id === Number(id));
   const currentPrice = ticketPrice * value;
@@ -38,7 +38,7 @@ const Payment = () => {
     fetchMoviesData();
   }, []);
 
-  console.log(date, hour, theater, sala, value, currentPrice, seatSummary)
+  console.log(date, hour, theater, sala, value, currentPrice, seatSummary, )
 
 
   return (

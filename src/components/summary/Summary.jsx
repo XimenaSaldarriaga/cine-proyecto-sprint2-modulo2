@@ -1,6 +1,6 @@
 import './summary.scss';
 import { URL_IMAGE } from '../../services/data';
-import React, { useState, useEffect} from 'react';
+import React  from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber, fromSeats, handleContinuar, seatSummary}) => {
@@ -8,6 +8,7 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selecte
   const navigate = useNavigate();
 
   let { id } = useParams();
+
 
 
   const handleContinue = () => {
@@ -18,7 +19,6 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selecte
     } else {
     }
   };
-
 
 
   return (
