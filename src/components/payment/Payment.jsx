@@ -14,7 +14,6 @@ const Payment = () => {
     console.log(dataForm);
   };
 
-  const [selecMovie, setSelecMovie] = useState(null);
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -29,6 +28,7 @@ const Payment = () => {
   const getSeatLetterAndNumber = queryParams.get('getSeatLetterAndNumber');
   const fromSeats = queryParams.get('fromSeats') === 'true';
   const seatSummary = queryParams.get('seatSummary');
+  const [movie, setMovie] = React.useState([]);
 
   useEffect(() => {
     const fetchMoviesData = async () => {
@@ -39,7 +39,6 @@ const Payment = () => {
   }, []);
 
   console.log(data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber, fromSeats, seatSummary);
-
 
   return (
     <>
@@ -96,7 +95,7 @@ const Payment = () => {
         </div>
         <div className='payment__summary'>
           <Summary
-            data={selecMovie}
+            data={data}
             date={date}
             hour={hour}
             theater={theater}

@@ -24,14 +24,14 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selecte
       <div className='summary'>
         <h2 className='summary__title'>Resumen de compra</h2>
         <div className='summary__details'>
-          {/* <div className='summary__image'>
+          <div className='summary__image'>
             <img src={`${URL_IMAGE}${data.poster_path}`} alt='' />
-          </div> */}
+          </div>
           <div className='summary__info'>
-            {/* <div>
+            <div>
               <span className='summary__subtitle'>Pelicula:</span>
               <span>{data.title}</span>
-            </div> */}
+            </div>
             <div>
               <span className='summary__subtitle'>Cinema:</span>
               <span>{theater}</span>
