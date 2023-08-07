@@ -1,0 +1,33 @@
+.admin {
+
+    &__dates {
+        display: flex;
+        gap: 1rem;
+        color: white;
+    }
+
+    &__date {
+        background-color: #1c508d;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 15px;
+        border-radius: 5px;
+        line-height: 1rem;
+    }
+
+    &__day {
+        font-size: 22px;
+    }
+
+    &__month {
+        font-size: 12px;
+    }
+
+    &__theaters {
+        background-color: rgba(128, 128, 128, 0.079);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
