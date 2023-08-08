@@ -84,23 +84,32 @@ const Admin = () => {
                     theater.dates.map((date, dateIndex) => {
                       if (date.date === selectedDate.date) {
                         return (
-                          <div className='admin__hours' key={dateIndex}>
-                            {date.hours.map((hour, hourIndex) => {
-                              const [time, room] = hour.split(' - ');
-                              return (
-                                <div key={hourIndex}>
-
-                                  <div className='admin__sala'>
-                                  <h3>Sala {room}</h3>
-                                  <button onClick={() => handleEditRoom(theaterIndex, dateIndex)}>
-                                    <RiEditCircleLine className="edit-icon" />
-                                  </button>
-                                  <button onClick={() => handleDeleteRoom(theaterIndex, dateIndex)}>
-                                    <IoIosCloseCircleOutline className="delete-icon" />
-                                  </button>
-                                  </div>
-
-                                  <p className='admin__hour'>
+                          <div>
+                          {date.hours.reduce((roomGroups, hour) => {
+                            const [time, room] = hour.split(' - ');
+                            const roomIndex = roomGroups.findIndex(group => group.room === room);
+                        
+                            if (roomIndex === -1) {
+                              roomGroups.push({ room, hours: [hour] });
+                            } else {
+                              roomGroups[roomIndex].hours.push(hour);
+                            }
+                        
+                            return roomGroups;
+                          }, []).map((roomGroup, roomIndex) => (
+                            <div className='admin__sala' key={roomIndex}>
+                              <h3>Sala {roomGroup.room}</h3>
+                              <button onClick={() => handleEditRoom(theaterIndex, dateIndex)}>
+                                <RiEditCircleLine className="edit-icon" />
+                              </button>
+                              <button onClick={() => handleDeleteRoom(theaterIndex, dateIndex)}>
+                                <IoIosCloseCircleOutline className="delete-icon" />
+                              </button>
+                              
+                              {roomGroup.hours.map((hour, hourIndex) => {
+                                const [time, _] = hour.split(' - ');
+                                return (
+                                  <p className='admin__hour' key={hourIndex}>
                                     {time}{' '}
                                     <button onClick={() => handleEditHour(theaterIndex, dateIndex, hourIndex)}>
                                       <RiEditCircleLine className="edit-icon" />
@@ -109,10 +118,11 @@ const Admin = () => {
                                       <IoIosCloseCircleOutline className="delete-icon" />
                                     </button>
                                   </p>
-                                </div>
-                              );
-                            })}
-                          </div>
+                                );
+                              })}
+                            </div>
+                          ))}
+                        </div>
                         );
                       }
                       return null;
