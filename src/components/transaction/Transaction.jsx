@@ -3,7 +3,7 @@ import HeaderNav from '../headerNav/HeaderNav'
 import ok from "../../images/ok.png"
 import './transaction.scss'
 import Summary from '../summary/Summary'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 const Transaction = () => {
@@ -22,6 +22,7 @@ const Transaction = () => {
   const seatSummary = queryParams.get('seatSummary');
   const transactionId = queryParams.get('transactionId');
   const currentDate = new Date();
+  
   const formattedDate = currentDate.toLocaleDateString('es-ES', {
     year: 'numeric',
     month: 'long',

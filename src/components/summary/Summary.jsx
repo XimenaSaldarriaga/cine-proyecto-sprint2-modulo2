@@ -79,7 +79,8 @@ console.log(data)
           className='summary__button'
           onClick={() => {
             if (isTransactionPage) {
-              const downloadUrl = `/download?data=${encodeURIComponent(JSON.stringify(data))}&hour=${hour}&date=${date}&theater=${theater}&sala=${sala}&seatSummary=${encodeURIComponent(JSON.stringify(seatSummary))}`;
+              const qrData = Math.random().toString(36).substring(7);
+              const downloadUrl = `/download?data=${encodeURIComponent(JSON.stringify(data))}&qrData=${qrData}&hour=${hour}&date=${date}&theater=${theater}&sala=${sala}&seatSummary=${encodeURIComponent(JSON.stringify(seatSummary))}`;
               navigate(downloadUrl);
             } else {
               handleContinue();

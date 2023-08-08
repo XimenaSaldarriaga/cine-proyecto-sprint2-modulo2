@@ -1,8 +1,8 @@
 import React from 'react'
 import HeaderNav from '../headerNav/HeaderNav'
-import qr from '../../images/qr.webp'
 import './download.scss'
 import { useLocation } from 'react-router-dom';
+import QRCode from 'qrcode.react'; 
 
 const Download = () => {
 
@@ -15,8 +15,7 @@ const Download = () => {
   const hour = queryParams.get('hour');
   const sala = queryParams.get('sala');
   const seatSummary = queryParams.get('seatSummary');
-
-
+  const qrData = queryParams.get('qrData');
 
   return (
     <>
@@ -42,7 +41,7 @@ const Download = () => {
           </div>
         </div>
         <div className='download__qr'>
-          <img src={qr} alt="" />
+        <QRCode  value={qrData} />
         </div>
       </div>
       </div>
