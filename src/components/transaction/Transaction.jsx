@@ -55,7 +55,8 @@ const Transaction = () => {
             </div>
           </div>
         </div>
-      </div>
+
+        <div className='transaction__summary'>
       <Summary
             data={data}
             date={date}
@@ -68,6 +69,8 @@ const Transaction = () => {
             seatSummary={seatSummary}
             isTransactionPage={true}
           />
+      </div>
+      </div>
     </div>
   )
 }
