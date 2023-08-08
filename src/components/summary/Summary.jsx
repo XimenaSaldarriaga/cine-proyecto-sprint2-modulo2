@@ -3,7 +3,7 @@ import { URL_IMAGE } from '../../services/data';
 import React  from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber, fromSeats, handleContinuar, seatSummary}) => {
+const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber, fromSeats, handleContinuar, seatSummary, isPaymentPage, isTransactionPage}) => {
   
   const navigate = useNavigate();
 
@@ -63,16 +63,28 @@ console.log(data)
           )}
           </div>
         </div>
-        <p className='summary__paragraph'>Se realizará un cargo por servicio por cada boleto dentro de la orden</p>
-        <div className='summary__total'>
-          <span>Total (IVA incluido): </span>
-          <span className='selectTickets__price'>
-            {currentPrice.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}
-          </span>
+        {!isTransactionPage && (
+        <div>
+          <p className='summary__paragraph'>
+            Se realizará un cargo por servicio por cada boleto dentro de la orden
+          </p>
+          <div className='summary__total'>
+            <span>Total (IVA incluido): </span>
+            <span className='selectTickets__price'>
+              {currentPrice.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}
+            </span>
+          </div>
         </div>
-        <button className='summary__button' onClick={handleContinue} style={{ opacity: value >= 1 ? 1 : 0.5 }}>
-          Continuar
+      )}
+        {!isPaymentPage && (
+        <button
+          className='summary__button'
+          onClick={handleContinue}
+          style={{ opacity: value >= 1 ? 1 : 0.5 }}
+        >
+          {isTransactionPage ? 'Descargar Boletos' : 'Continuar'}
         </button>
+      )}
       </div>
     </div>
   );

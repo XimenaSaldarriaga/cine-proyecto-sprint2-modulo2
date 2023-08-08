@@ -11,6 +11,7 @@ const Payment = () => {
 
   const onSubmit = (dataForm) => {
     console.log(dataForm);
+    navigate(`/transaction?data=${encodeURIComponent(dataStr)}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}&selectedButtons=${selectedButtons}&seatSummary=${seatSummary}`);
   };
 
   const location = useLocation();
@@ -112,6 +113,7 @@ const Payment = () => {
             currentPrice={currentPrice}
             selectedButtons={selectedButtons}
             seatSummary={seatSummary}
+            isPaymentPage={true}
           />
         </div>
       </div>

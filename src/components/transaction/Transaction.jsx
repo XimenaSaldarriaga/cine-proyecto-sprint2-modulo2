@@ -2,9 +2,27 @@ import React from 'react'
 import HeaderNav from '../headerNav/HeaderNav'
 import ok from "../../images/ok.png"
 import './transaction.scss'
+import Summary from '../summary/Summary'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const Transaction = () => {
+
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const dataStr = queryParams.get('data');
+  const data = JSON.parse(decodeURIComponent(dataStr));
+  const theater = queryParams.get('theater');
+  const date = queryParams.get('date');
+  const hour = queryParams.get('hour');
+  const sala = queryParams.get('sala');
+  const value = queryParams.get('value');
+  const currentPrice = queryParams.get('currentPrice');
+  const selectedButtons = queryParams.get('selectedButtons');
+  const seatSummary = queryParams.get('seatSummary');
+
+
   return (
     <div>
       <HeaderNav />
@@ -38,6 +56,18 @@ const Transaction = () => {
           </div>
         </div>
       </div>
+      <Summary
+            data={data}
+            date={date}
+            hour={hour}
+            theater={theater}
+            sala={sala}
+            value={value}
+            currentPrice={currentPrice}
+            selectedButtons={selectedButtons}
+            seatSummary={seatSummary}
+            isTransactionPage={true}
+          />
     </div>
   )
 }
