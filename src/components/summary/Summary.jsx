@@ -77,7 +77,14 @@ console.log(data)
         {!isPaymentPage && (
         <button
           className='summary__button'
-          onClick={handleContinue}
+          onClick={() => {
+            if (isTransactionPage) {
+              const downloadUrl = `/download?data=${encodeURIComponent(JSON.stringify(data))}&hour=${hour}&date=${date}&theater=${theater}&sala=${sala}&seatSummary=${encodeURIComponent(JSON.stringify(seatSummary))}`;
+              navigate(downloadUrl);
+            } else {
+              handleContinue();
+            }
+          }}
           style={{ opacity: value >= 1 ? 1 : 0.5 }}
         >
           {isTransactionPage ? 'Descargar Boletos' : 'Continuar'}
