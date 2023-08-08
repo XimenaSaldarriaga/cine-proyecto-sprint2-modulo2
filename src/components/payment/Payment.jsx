@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import HeaderNav from '../headerNav/HeaderNav';
@@ -9,9 +9,13 @@ const Payment = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
+  const [transactionId, setTransactionId] = useState(null);
+
   const onSubmit = (dataForm) => {
     console.log(dataForm);
-    navigate(`/transaction?data=${encodeURIComponent(dataStr)}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}&selectedButtons=${selectedButtons}&seatSummary=${seatSummary}`);
+    const randomTransactionId = Math.floor(Math.random() * 9000000000) + 1000000000;
+    setTransactionId(randomTransactionId);
+    navigate(`/transaction?data=${encodeURIComponent(dataStr)}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}&selectedButtons=${selectedButtons}&seatSummary=${seatSummary}&transactionId=${randomTransactionId}`);
   };
 
   const location = useLocation();

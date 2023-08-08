@@ -20,7 +20,7 @@ const Transaction = () => {
   const currentPrice = queryParams.get('currentPrice');
   const selectedButtons = queryParams.get('selectedButtons');
   const seatSummary = queryParams.get('seatSummary');
-
+  const transactionId = queryParams.get('transactionId');
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleDateString('es-ES', {
     year: 'numeric',
@@ -45,7 +45,7 @@ const Transaction = () => {
           <div className='transaction__data'>
             <div className='transaction__datadiv'>
               <p className='transaction__up'>Código</p>
-              <p className='transaction__down'>#2545854752</p>
+              <p className='transaction__down'>#{transactionId}</p>
             </div>
             <div className='transaction__datadiv'>
               <p className='transaction__up'>Fecha</p>
