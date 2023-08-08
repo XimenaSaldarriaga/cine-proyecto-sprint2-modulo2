@@ -8,6 +8,7 @@ const Admin = () => {
   const [theaters, setTheaters] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTheater, setSelectedTheater] = useState(null);
+  const [selectedDateIndex, setSelectedDateIndex] = useState(null);
 
   useEffect(() => {
     getTheatersData();
@@ -22,8 +23,9 @@ const Admin = () => {
     }
   };
 
-  const handleDateClick = (date) => {
+  const handleDateClick = (date, index) => {
     setSelectedDate(date);
+    setSelectedDateIndex(index);
     setSelectedTheater(null);
   };
 
@@ -36,20 +38,27 @@ const Admin = () => {
       <HeaderNav />
       <div className='admin'>
         <div></div>
-        <div>
-          <div></div>
-          <div>
+        <div className='admin__main'>
+          <div className='admin__info'>
+            <p>Sinopsis</p>
+            <p>Título original</p>
+            <p>Pais de origen</p>
+            <p>Director</p>
+            <p>Actores</p>
+            <p>Lenguaje</p>
+          </div>
+          <div className='admin__cinemas'>
             <div className='admin__dates'>
-            {theaters[0]?.dates.map((date, index) => {
+              {theaters[0]?.dates.map((date, index) => {
                 const [day, month] = date.date.split(' ');
                 return (
                   <div
-                    className='admin__date'
+                    className={`admin__date ${selectedDateIndex === index ? 'selected-date' : ''}`}
                     key={index}
-                    onClick={() => handleDateClick(date)}
+                    onClick={() => handleDateClick(date, index)}
                     style={{ cursor: 'pointer' }}
                   >
-                    <span className='admin__day'>{day}</span> 
+                    <span className='admin__day'>{day}</span>
                     <span className='admin__month'>{month.toUpperCase()}</span>
                   </div>
                 );

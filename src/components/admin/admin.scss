@@ -1,9 +1,27 @@
 .admin {
 
+    margin: 100px 180px;
+
+    &__main {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    &__info {
+        width: 30%;
+    }
+
+    &__cinemas {
+        width: 70%;
+    }
+
     &__dates {
         display: flex;
         gap: 1rem;
         color: white;
+        justify-content: center;
+        
     }
 
     &__date {
@@ -13,6 +31,11 @@
         padding: 10px 15px;
         border-radius: 5px;
         line-height: 1rem;
+        opacity: 0.7;
+    }
+
+    &__date:hover {
+        background-color: #0076ff;
     }
 
     &__day {
@@ -29,5 +52,21 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        border-radius: 5px;
+        margin-top: 2rem;
+    }
+
+    &__theater {
+        border-bottom: 1px solid rgba(128, 128, 128, 0.671);
+        padding: 20px;
+    }
+
+    &__theater:hover {
+        background-color:  rgba(128, 128, 128, 0.116);
     }
 }
+
+.admin__date.selected-date {
+    opacity: 1;
+  }
+
