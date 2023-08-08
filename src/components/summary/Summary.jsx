@@ -13,7 +13,7 @@ const Summary = ({ data, theater, date, hour, sala, value, currentPrice, selecte
   const handleContinue = () => {
     if (fromSeats && selectedButtons.length == value) {
       const dataStr = JSON.stringify(data);
-      handleContinuar(`/payment?data=${encodeURIComponent(dataStr)}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}&selectedButtons=${selectedButtons}&getSeatLetterAndNumber=${getSeatLetterAndNumber}&fromSeats=${fromSeats}&seatSummary=${seatSummary}`);
+      handleContinuar(`/payment?data=${encodeURIComponent(dataStr)}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}&selectedButtons=${selectedButtons}&seatSummary=${seatSummary}`);
     } else if (!fromSeats && value >= 1) {
       handleContinuar(`/seats/${id}?data=${data}&theater=${theater}&date=${date}&hour=${hour}&sala=${sala}&value=${value}&currentPrice=${currentPrice}`);
     } else {
