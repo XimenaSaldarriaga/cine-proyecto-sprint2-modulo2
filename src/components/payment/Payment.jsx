@@ -17,7 +17,8 @@ const Payment = () => {
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const data = queryParams.get('data');
+  const dataStr = queryParams.get('data');
+  const data = JSON.parse(decodeURIComponent(dataStr));
   const theater = queryParams.get('theater');
   const date = queryParams.get('date');
   const hour = queryParams.get('hour');
@@ -28,15 +29,7 @@ const Payment = () => {
   const getSeatLetterAndNumber = queryParams.get('getSeatLetterAndNumber');
   const fromSeats = queryParams.get('fromSeats') === 'true';
   const seatSummary = queryParams.get('seatSummary');
-  const [movie, setMovie] = React.useState([]);
 
-  useEffect(() => {
-    const fetchMoviesData = async () => {
-      const data = await getDataMovies();
-      setMovie(data);
-    };
-    fetchMoviesData();
-  }, []);
 
   console.log(data, theater, date, hour, sala, value, currentPrice, selectedButtons, getSeatLetterAndNumber, fromSeats, seatSummary);
 
