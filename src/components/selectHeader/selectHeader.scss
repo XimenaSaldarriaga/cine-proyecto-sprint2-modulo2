@@ -8,6 +8,22 @@
       gap: 2rem;
     }
 
+    &__profileSection {
+      display: flex;
+      color: white;
+      align-items: center;
+      gap: 5px;
+    }
+
+    &__profileName {
+      font-size: 14px;
+    }
+
+    &__profileButton {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
     &__select {
         width: 200px;
         background-color: #1c508d;
