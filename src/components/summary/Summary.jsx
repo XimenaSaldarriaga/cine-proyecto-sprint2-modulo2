@@ -70,9 +70,7 @@ console.log(data)
           </p>
           <div className='summary__total'>
             <span>Total (IVA incluido): </span>
-            <span className='selectTickets__price'>
-              {currentPrice.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}
-            </span>
+            <span className='selectTickets__price'>$ {currentPrice}</span>
           </div>
         </div>
       )}

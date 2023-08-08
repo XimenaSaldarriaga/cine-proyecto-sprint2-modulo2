@@ -8,7 +8,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const Transaction = () => {
 
-
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const dataStr = queryParams.get('data');
@@ -21,6 +20,13 @@ const Transaction = () => {
   const currentPrice = queryParams.get('currentPrice');
   const selectedButtons = queryParams.get('selectedButtons');
   const seatSummary = queryParams.get('seatSummary');
+
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
 
   return (
@@ -43,11 +49,11 @@ const Transaction = () => {
             </div>
             <div className='transaction__datadiv'>
               <p className='transaction__up'>Fecha</p>
-              <p className='transaction__down'>Agosto 10, 2023</p>
+              <p className='transaction__down'>{formattedDate}</p>
             </div>
             <div className='transaction__datadiv'>
               <p className='transaction__up'>Total</p>
-              <p className='transaction__down'>$30.000</p>
+              <p className='transaction__down'>$ {currentPrice}</p>
             </div>
             <div className='transaction__datadiv'>
               <p className='transaction__up'>Método de pago</p>

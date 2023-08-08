@@ -66,8 +66,9 @@
 
     &__summary {
         display: flex;
-        justify-content: center;
+        width: 40%;
         margin-top: 15px;
+        align-self: center;
     }
 
 }
