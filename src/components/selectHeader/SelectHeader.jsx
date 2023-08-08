@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './selectHeader.scss';
-import SelectDate from '../selectDate/SelectDate';
 import SearchMovie from '../searchMovie/SearchMovie';
 import { URL_USERS } from '../../services/data';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
+import location from '../../images/location.png'
+
 
 
 const SelectHeader = () => {
@@ -14,7 +15,7 @@ const SelectHeader = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [users, setUsers] = useState([]);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(URL_USERS)
@@ -119,14 +120,19 @@ const SelectHeader = () => {
           </div>
         </div>
       )}
+      <div className='selectHeader__info'>
       <SearchMovie />
-      <SelectDate />
+      <div className='selectHeader__loc'>
+        <span className='selectHeader__city'>Medellín</span>
+        <img className='selectHeader__location' src={location} alt="" />
+      </div>
       <img
         className='selectHeader__icon'
         src='https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png'
         alt=''
         onClick={handleImageClick}
       />
+      </div>
     </div>
   );
 };
