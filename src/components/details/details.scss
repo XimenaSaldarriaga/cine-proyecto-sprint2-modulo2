@@ -2,12 +2,14 @@
     display: flex;
     margin: 100px 180px;
     justify-content: space-between;
+    gap: 6rem;
 
     &__movie {
         width: 60%;
     }
 
     &__hour {
+        width: 40%;
         display: flex;
         flex-direction: column;
         gap: 2rem;

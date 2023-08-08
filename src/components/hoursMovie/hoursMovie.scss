@@ -28,6 +28,7 @@
         font-size: 14px;
         display: flex;
         gap: 10px;
+        flex-wrap: wrap;
     }
 
     &__option {
@@ -39,7 +40,8 @@
 
     &__option:hover {
         color: #fff;
-        background-color: #1c508d;
+        background-color: #1c508d
+
     }
 
     &__button {
@@ -53,6 +55,7 @@
         width: 100%;
         opacity: 0.2;
         cursor: pointer;
+        flex-wrap: wrap;
     }
 
     &__button:hover {
