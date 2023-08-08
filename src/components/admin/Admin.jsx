@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import HeaderNav from '../headerNav/HeaderNav';
 import { URL_THEATERS } from '../../services/data';
 import './admin.scss'
+import { RiEditCircleLine } from 'react-icons/ri';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
+
 
 const Admin = () => {
   const [theaters, setTheaters] = useState([]);
@@ -81,28 +84,34 @@ const Admin = () => {
                     theater.dates.map((date, dateIndex) => {
                       if (date.date === selectedDate.date) {
                         return (
-                          <div key={dateIndex}>
+                          <div className='admin__hours' key={dateIndex}>
                             {date.hours.map((hour, hourIndex) => {
                               const [time, room] = hour.split(' - ');
                               return (
                                 <div key={hourIndex}>
+
+                                  <div className='admin__sala'>
                                   <h3>Sala {room}</h3>
-                                  <p>Hora: {time}</p>
-                                  <button onClick={() => handleEditHour(theaterIndex, dateIndex, hourIndex)}>
-                                    Editar Hora
+                                  <button onClick={() => handleEditRoom(theaterIndex, dateIndex)}>
+                                    <RiEditCircleLine className="edit-icon" />
                                   </button>
-                                  <button onClick={() => handleDeleteHour(theaterIndex, dateIndex, hourIndex)}>
-                                    Eliminar Hora
+                                  <button onClick={() => handleDeleteRoom(theaterIndex, dateIndex)}>
+                                    <IoIosCloseCircleOutline className="delete-icon" />
                                   </button>
+                                  </div>
+
+                                  <p className='admin__hour'>
+                                    {time}{' '}
+                                    <button onClick={() => handleEditHour(theaterIndex, dateIndex, hourIndex)}>
+                                      <RiEditCircleLine className="edit-icon" />
+                                    </button>
+                                    <button onClick={() => handleDeleteHour(theaterIndex, dateIndex, hourIndex)}>
+                                      <IoIosCloseCircleOutline className="delete-icon" />
+                                    </button>
+                                  </p>
                                 </div>
                               );
                             })}
-                            <button onClick={() => handleEditRoom(theaterIndex, dateIndex)}>
-                              Editar Sala
-                            </button>
-                            <button onClick={() => handleDeleteRoom(theaterIndex, dateIndex)}>
-                              Eliminar Sala
-                            </button>
                           </div>
                         );
                       }
