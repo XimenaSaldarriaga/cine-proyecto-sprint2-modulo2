@@ -11,11 +11,13 @@ const Home = () => {
     setSelectedGenre(genreId);
   };
 
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
   return (
     <div className='home'>
-      <HeaderNav onFilterByGenre={filterMoviesByGenre} />
+      <HeaderNav onFilterByGenre={filterMoviesByGenre} loggedInUserProp={loggedInUser} setLoggedInUserProp={setLoggedInUser} />
       <Carousel />
-      <Cartelera selectedGenre={selectedGenre} />
+      <Cartelera selectedGenre={selectedGenre} loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
     </div>
   )
 }

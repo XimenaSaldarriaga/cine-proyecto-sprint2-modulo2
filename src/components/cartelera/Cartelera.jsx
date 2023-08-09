@@ -3,7 +3,7 @@ import './cartelera.scss';
 import { getDataMovies } from '../../services/data';
 import CardCartelera from '../cardCartelera/CardCartelera';
 
-const Cartelera = ({ selectedGenre }) => {
+const Cartelera = ({ selectedGenre, loggedInUser, setLoggedInUser }) => {
   const [movies, setMovies] = useState([]);
   const [genreTitle, setGenreTitle] = useState('EN CARTELERA');
 
@@ -40,6 +40,8 @@ const Cartelera = ({ selectedGenre }) => {
       <div className='cartelera__cards'>
         {filteredMovies.map((movie, index) => (
           <CardCartelera
+            setLoggedInUser={setLoggedInUser}
+            loggedInUser={loggedInUser}
             key={index}
             data={movie}
           />

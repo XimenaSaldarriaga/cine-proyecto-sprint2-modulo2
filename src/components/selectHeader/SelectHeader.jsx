@@ -3,19 +3,17 @@ import React, { useEffect, useState } from 'react';
 import './selectHeader.scss';
 import SearchMovie from '../searchMovie/SearchMovie';
 import { URL_USERS } from '../../services/data';
-import { useNavigate } from 'react-router-dom';
 import location from '../../images/location.png';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 
 
-const SelectHeader = () => {
+const SelectHeader = ( { loggedInUser, setLoggedInUser }) => {
+
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [users, setUsers] = useState([]);
-  const [loggedInUser, setLoggedInUser] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));

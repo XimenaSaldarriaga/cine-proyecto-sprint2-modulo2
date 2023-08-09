@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import './cardCartelera.scss';
 import { URL_IMAGE } from '../../services/data';
 
-const CardCartelera = ({ data }) => {
-  
+const CardCartelera = ({ data, loggedInUser, setLoggedInUser }) => {
+  const linkTo = loggedInUser ? '/admin' : `/details/${data.id}`;
+
   return (
-    <Link to={`/details/${data.id}`} className='card-link'>
+    <Link to={linkTo} className='card-link'>
       <div className='card'>
         <div>
           <img className='card__image' src={`${URL_IMAGE + data.poster_path}`} alt='' />
@@ -24,6 +25,7 @@ const CardCartelera = ({ data }) => {
 };
 
 export default CardCartelera;
+
 
 
 
