@@ -5,6 +5,7 @@ import YouTube from 'react-youtube';
 import { API_URL, API_KEY, URL_IMAGE } from '../../services/data';
 
 const DetailsCard = ({ data }) => {
+  
   const [trailer, setTrailer] = useState(null);
   const [movie, setMovie] = useState(data);
   const [playing, setPlaying] = useState(true);

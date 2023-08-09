@@ -49,7 +49,7 @@ const Home = () => {
 
   const handleCardClick = (data) => {
     if (loggedInUser) {
-      navigate(`/admin`);
+      navigate(`/admin/${data.id}`);
     } else if (data.id) {
       navigate(`/details/${data.id}`);
     }

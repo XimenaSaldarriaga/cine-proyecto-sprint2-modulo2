@@ -27,6 +27,9 @@ const Links = () => {
                 <li>
                   <NavLink to="/download"></NavLink>
                 </li>
+                <li>
+                  <NavLink to="/admin/:id"></NavLink>
+                </li>
             </ul>
         </nav>
         <Outlet />

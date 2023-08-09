@@ -1,23 +1,57 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import HeaderNav from '../headerNav/HeaderNav';
-import { URL_THEATERS } from '../../services/data';
 import './admin.scss'
 import { RiEditCircleLine } from 'react-icons/ri';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
+import { getDataMovies } from '../../services/data';
+import { useParams } from 'react-router-dom';
+import { API_URL, API_KEY, URL_IMAGE, URL_THEATERS } from '../../services/data';
 
-const Admin = () => {
+const Admin = ({data, navigate}) => {
 
+  const { id } = useParams();
   const [theaters, setTheaters] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTheater, setSelectedTheater] = useState(null);
   const [selectedDateIndex, setSelectedDateIndex] = useState(null);
-
+  const [movies, setMovies] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [trailer, setTrailer] = useState(null);
+  const [movie, setMovie] = useState(data);
+  const [playing, setPlaying] = useState(true);
+
+  console.log(id)
+
+  useEffect(() => {
+    const fetchMoviesData = async () => {
+      const data = await getDataMovies();
+      setMovies(data);
+    };
+    fetchMoviesData();
+  }, []);
+
+  const selectedMovie = movies.find((movie) => movie.id === Number(id));
 
   useEffect(() => {
     getTheatersData();
   }, []);
+
+  // const fetchMovie = async (id) => {
+  //   const { data } = await axios.get(`${API_URL}/movie/${id}`, {
+  //     params: {
+  //       api_key: API_KEY,
+  //       append_to_response: 'videos',
+  //     },
+  //   });
+
+  //   if (data.videos && data.videos.results) {
+  //     const trailer = data.videos.results.find((vid) => vid.name === 'Official Trailer');
+  //     setTrailer(trailer ? trailer : data.videos.results[0]);
+  //     setMovie(data);
+  //   }
+  // };
+
 
   const getTheatersData = async () => {
     try {
@@ -38,6 +72,8 @@ const Admin = () => {
     setSelectedTheater(selectedTheater === theater ? null : theater);
   };
 
+  
+
   return (
     <div>
       <HeaderNav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>
@@ -45,8 +81,8 @@ const Admin = () => {
         <div></div>
         <div className='admin__main'>
           <div className='admin__info'>
-            <p>Sinopsis</p>
-            <p>Título original</p>
+            {/* <p>{selectedMovie.overview}</p> */}
+            {/* <p>{selectedMovie.title}</p> */}
             <p>Pais de origen</p>
             <p>Director</p>
             <p>Actores</p>
