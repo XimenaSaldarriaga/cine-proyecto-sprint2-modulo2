@@ -7,7 +7,7 @@ import { URL_USERS } from '../../services/data';
 import location from '../../images/location.png';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 
-const HeaderNav = ({ onFilterByGenre, loggedInUserProp, setloggedInUserProp }) => {
+const HeaderNav = ({ onFilterByGenre, loggedInUserProp, setLoggedInUserProp }) => {
 
   const [selectedGenre, setSelectedGenre] = useState(null);
 
@@ -24,7 +24,7 @@ const HeaderNav = ({ onFilterByGenre, loggedInUserProp, setloggedInUserProp }) =
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('loggedInUserProp'));
     if (storedUser) {
-      setloggedInUserProp(storedUser);
+      setLoggedInUserProp(storedUser);
     }
 
     axios.get(URL_USERS)
@@ -62,7 +62,7 @@ const HeaderNav = ({ onFilterByGenre, loggedInUserProp, setloggedInUserProp }) =
     const user = users.find((user) => user.email === email && user.password === password);
 
     if (user) {
-      setloggedInUserProp(user);
+      setLoggedInUserProp(user);
       setShowLoginForm(false);
       localStorage.setItem('loggedInUserProp', JSON.stringify(user));
     } else {
@@ -71,12 +71,12 @@ const HeaderNav = ({ onFilterByGenre, loggedInUserProp, setloggedInUserProp }) =
   };
 
   const handleLogout = () => {
-    setloggedInUserProp(null);
+    setLoggedInUserProp(null);
     localStorage.removeItem('loggedInUserProp');
   };
 
-
   return (
+
     <div className='header__navbar'>
       <Link to="/">
         <img
