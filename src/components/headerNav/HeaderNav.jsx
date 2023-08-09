@@ -7,9 +7,9 @@ import { URL_USERS } from '../../services/data';
 import location from '../../images/location.png';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 
-const HeaderNav = ({ onFilterByGenre, loggedInUserProp, setLoggedInUserProp }) => {
+const HeaderNav = ({ onFilterByGenre, loggedInUser, setLoggedInUser }) => {
 
-  const [selectedGenre, setSelectedGenre] = useState(null);
+  const [selectedGenre, setSelectedGenre] = useState(null)
 
   const filterMoviesByGenre = (genreId) => {
     setSelectedGenre(genreId);
@@ -21,10 +21,11 @@ const HeaderNav = ({ onFilterByGenre, loggedInUserProp, setLoggedInUserProp }) =
   const [password, setPassword] = useState('');
   const [users, setUsers] = useState([]);
 
+
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('loggedInUserProp'));
+    const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if (storedUser) {
-      setLoggedInUserProp(storedUser);
+      setLoggedInUser(storedUser);
     }
 
     axios.get(URL_USERS)
@@ -62,17 +63,17 @@ const HeaderNav = ({ onFilterByGenre, loggedInUserProp, setLoggedInUserProp }) =
     const user = users.find((user) => user.email === email && user.password === password);
 
     if (user) {
-      setLoggedInUserProp(user);
+      setLoggedInUser(user);
       setShowLoginForm(false);
-      localStorage.setItem('loggedInUserProp', JSON.stringify(user));
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
     } else {
       console.log('Invalid login');
     }
   };
 
   const handleLogout = () => {
-    setLoggedInUserProp(null);
-    localStorage.removeItem('loggedInUserProp');
+    setLoggedInUser(null);
+    localStorage.removeItem('loggedInUser');
   };
 
   return (
@@ -95,7 +96,7 @@ const HeaderNav = ({ onFilterByGenre, loggedInUserProp, setLoggedInUserProp }) =
         <button className='navbar__button' onClick={() => onFilterByGenre(12)}>Aventura</button>
       </nav>
       <div className='selectHeader'>
-      {loggedInUserProp ? (
+      {loggedInUser ? (
         <div className='selectHeader__info'>
           <SearchMovie />
           <div className='selectHeader__loc'>
@@ -109,7 +110,7 @@ const HeaderNav = ({ onFilterByGenre, loggedInUserProp, setLoggedInUserProp }) =
             onClick={handleImageClick}
           />
           <div className='selectHeader__profileSection'>
-            <span className='selectHeader__profileName'>{loggedInUserProp.name}</span>
+            <span className='selectHeader__profileName'>{loggedInUser.name}</span>
             <IoIosCloseCircleOutline className='selectHeader__profileButton' onClick={handleLogout}/>
           </div>
         </div>

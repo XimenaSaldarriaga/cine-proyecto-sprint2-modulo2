@@ -6,12 +6,14 @@ import './admin.scss'
 import { RiEditCircleLine } from 'react-icons/ri';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 
-
 const Admin = () => {
+
   const [theaters, setTheaters] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTheater, setSelectedTheater] = useState(null);
   const [selectedDateIndex, setSelectedDateIndex] = useState(null);
+
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   useEffect(() => {
     getTheatersData();
@@ -38,7 +40,7 @@ const Admin = () => {
 
   return (
     <div>
-      <HeaderNav />
+      <HeaderNav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>
       <div className='admin'>
         <div></div>
         <div className='admin__main'>

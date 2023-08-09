@@ -1,30 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './cardCartelera.scss';
 import { URL_IMAGE } from '../../services/data';
 
-const CardCartelera = ({ data, loggedInUserProp }) => {
-  const linkTo = loggedInUserProp ? '/admin' : `/details/${data.id}`;
+const CardCartelera = ({ data, loggedInUser, setLoggedInUser }) => {
+  const navigate = useNavigate();
+  const linkTo = loggedInUser ? '/admin' : `/details/${data.id}`;
+
+  const handleCardClick = () => {
+    if (loggedInUser) {
+      navigate(`/admin?&loggedInUser=${loggedInUser}&setLoggedInUser=${setLoggedInUser}`);
+    } else if (data.id) {
+      navigate(`/details/${data.id}`);
+    }
+  };
 
   return (
-    <Link to={linkTo} className='card-link'>
-      <div className='card'>
-        <div>
-          <img className='card__image' src={`${URL_IMAGE + data.poster_path}`} alt='' />
-        </div>
-        <div className='card__info'>
-          <h1 className='card__title'>{data.title}</h1>
-          <span className='card__span'>Título en Inglés: {data.original_title}</span>
-          <span className='card__span'>Estreno: {data.release_date}</span>
-          <span className='card__span'>Género: {data.genres.join(', ')}</span>
-          <span className='card__runtime'>{data.duration} Min</span>
-        </div>
+    <div className='card' onClick={handleCardClick}>
+      <div>
+        <img className='card__image' src={`${URL_IMAGE + data.poster_path}`} alt='' />
       </div>
-    </Link>
+      <div className='card__info'>
+        <h1 className='card__title'>{data.title}</h1>
+        <span className='card__span'>Título en Inglés: {data.original_title}</span>
+        <span className='card__span'>Estreno: {data.release_date}</span>
+        <span className='card__span'>Género: {data.genres.join(', ')}</span>
+        <span className='card__runtime'>{data.duration} Min</span>
+      </div>
+    </div>
   );
 };
 
 export default CardCartelera;
+
 
 
 
