@@ -74,8 +74,12 @@ const Admin = ({ data }) => {
           {selectedMovie ? (
             <div className='admin__info'>
               <p>{selectedMovie.overview}</p>
-              <p>Título Original</p>
+
+              <div>
+              <p className='admin__subtitle'>Título Original</p>
               <p>{selectedMovie.original_title}</p>
+              </div>
+
               <p>Pais de origen</p>
               <p>Director</p>
               <p>Actores</p>
