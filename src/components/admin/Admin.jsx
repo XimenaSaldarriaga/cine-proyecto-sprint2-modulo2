@@ -7,9 +7,9 @@ import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { getDataMovies } from '../../services/data';
 import { useParams } from 'react-router-dom';
 import { API_URL, API_KEY, URL_IMAGE, URL_THEATERS } from '../../services/data';
+import YouTube from 'react-youtube';
 
-const Admin = ({ data }) => {
-
+const Admin = () => {
   const { id } = useParams();
   const [theaters, setTheaters] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -18,9 +18,8 @@ const Admin = ({ data }) => {
   const [movies, setMovies] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [trailer, setTrailer] = useState(null);
-  const [movie, setMovie] = useState(data);
   const [playing, setPlaying] = useState(true);
-
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     const fetchMoviesData = async () => {
@@ -30,14 +29,17 @@ const Admin = ({ data }) => {
     fetchMoviesData();
   }, []);
 
-  const selectedMovie = movies.find((movie) => movie.id === Number(id));
+  useEffect(() => {
+    const selectedMovie = movies.find((movie) => movie.id === Number(id));
+    setSelectedMovie(selectedMovie);
+    getTheatersData();
+  }, [movies, id]);
 
   useEffect(() => {
-    getTheatersData();
-  }, []);
-
-  console.log(id)
-  console.log(selectedMovie)
+    if (selectedMovie) {
+      fetchMovie(selectedMovie.id);
+    }
+  }, [selectedMovie]);
 
   const getTheatersData = async () => {
     try {
@@ -45,6 +47,20 @@ const Admin = ({ data }) => {
       setTheaters(data);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const fetchMovie = async (id) => {
+    const { data } = await axios.get(`${API_URL}/movie/${id}`, {
+      params: {
+        api_key: API_KEY,
+        append_to_response: 'videos',
+      },
+    });
+
+    if (data.videos && data.videos.results) {
+      const trailer = data.videos.results.find((vid) => vid.name === 'Official Trailer');
+      setTrailer(trailer ? trailer : data.videos.results[0]);
     }
   };
 
@@ -63,12 +79,28 @@ const Admin = ({ data }) => {
     <div>
       <HeaderNav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       {selectedMovie ? (
-          <div className='admin__video'>
-            <img className='admin__img' src={`${URL_IMAGE}${selectedMovie.poster_path}`} alt='' />
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
+        <div className='admin__video'>
+          <img className='admin__img' src={`${URL_IMAGE}${selectedMovie.poster_path}`} alt='' />
+          {playing && trailer ? (
+            <YouTube
+              className='admin__trailer'
+              videoId={trailer.key}
+              opts={{
+                width: '100%',
+                height: '350px',
+                playerVars: {
+                  rel: 0,
+                  controls: 0,
+                },
+              }}
+            />
+          ) : (
+            <p>Lo siento, el video no está disponible</p>
+          )}
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
       <div className='admin'>
         <div className='admin__main'>
           {selectedMovie ? (
@@ -76,11 +108,15 @@ const Admin = ({ data }) => {
               <p>{selectedMovie.overview}</p>
 
               <div>
-              <p className='admin__subtitle'>Título Original</p>
-              <p>{selectedMovie.original_title}</p>
+                <p className='admin__subtitle'>Título Original</p>
+                <p>{selectedMovie.original_title}</p>
               </div>
 
-              <p>Pais de origen</p>
+              <div>
+                <p>Pais de origen</p>
+                <p>{ }</p>
+              </div>
+
               <p>Director</p>
               <p>Actores</p>
               <p>Lenguaje</p>
