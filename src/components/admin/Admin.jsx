@@ -21,7 +21,6 @@ const Admin = ({data, navigate}) => {
   const [movie, setMovie] = useState(data);
   const [playing, setPlaying] = useState(true);
 
-  console.log(id)
 
   useEffect(() => {
     const fetchMoviesData = async () => {
@@ -36,6 +35,9 @@ const Admin = ({data, navigate}) => {
   useEffect(() => {
     getTheatersData();
   }, []);
+
+  console.log(id)
+  console.log(selectedMovie)
 
   // const fetchMovie = async (id) => {
   //   const { data } = await axios.get(`${API_URL}/movie/${id}`, {
@@ -81,8 +83,9 @@ const Admin = ({data, navigate}) => {
         <div></div>
         <div className='admin__main'>
           <div className='admin__info'>
-            {/* <p>{selectedMovie.overview}</p> */}
-            {/* <p>{selectedMovie.title}</p> */}
+            <p>{selectedMovie.overview}</p>
+            <p>Título Original</p>
+            <p>{selectedMovie.original_title}</p>
             <p>Pais de origen</p>
             <p>Director</p>
             <p>Actores</p>
