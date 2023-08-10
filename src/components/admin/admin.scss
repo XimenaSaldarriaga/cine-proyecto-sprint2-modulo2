@@ -2,6 +2,15 @@
 
     margin: 100px 180px;
 
+    &__video {
+        background-color: black;
+    }
+
+    &__img {
+        width: 20%;
+        border-radius: 5px;
+    }
+
     &__main {
         display: flex;
         width: 100%;
@@ -10,10 +19,13 @@
 
     &__info {
         width: 30%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
     }
 
     &__cinemas {
-        width: 70%;
+        width: 60%;
     }
 
     &__dates {
