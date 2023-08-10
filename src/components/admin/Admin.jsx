@@ -113,13 +113,19 @@ const Admin = () => {
               </div>
 
               <div>
-                <p>Pais de origen</p>
-                <p>{ }</p>
+                <p className='admin__subtitle'>Pais de origen</p>
+                <p>{}</p>
               </div>
 
-              <p>Director</p>
-              <p>Actores</p>
-              <p>Lenguaje</p>
+              <p className='admin__subtitle'>Director</p>
+
+              <p className='admin__subtitle'>Actores</p>
+
+              <div>
+              <p className='admin__subtitle'>Lenguaje</p>
+              <p>{selectedMovie.original_language}</p>
+              </div>
+
             </div>
           ) : (
             <p>Loading...</p>
