@@ -1,0 +1,201 @@
+.selectHeader {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    &__info {
+      display: flex;
+      gap: 2rem;
+    }
+
+    &__profileSection {
+      display: flex;
+      color: white;
+      align-items: center;
+      gap: 5px;
+    }
+
+    &__profileName {
+      font-size: 14px;
+    }
+
+    &__profileButton {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    &__select {
+        width: 200px;
+        background-color: #1c508d;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        color: #fff;
+        font-size: .75rem;
+        padding: 6px 12px;
+    }
+
+    &__city {
+      color: white;
+      font-size: 14px;
+    }
+
+    &__location {
+      width: 20px;
+      object-fit: contain;
+    }
+
+    &__loc {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+
+    &__icon {
+        width: 25px;
+        height: 25px;
+        background-color: #1c508d;
+        object-fit: contain;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    &__input {
+        border-radius: 1.5rem;
+        background-color: #dbe2f1;
+        outline: none;
+        font-size: .75rem;
+        padding: 6px 12px;
+        color: #1c508d;
+    }
+
+    &__loginFormOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+      }
+      
+      &__loginFormContainer {
+        position: relative;
+        width: 350px;
+      }
+      
+      &__loginForm {
+        background-color: #ffffff;
+        padding: 60px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      &__loginForm h1 {
+        font-size: 25px;
+        font-weight: 500;
+        align-self: center;
+      }
+
+      &__loginForm h2 {
+        font-size: 14px;
+        color: gray;
+        align-self: center;
+      } 
+      
+      &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      &__labelform {
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      &__inputform {
+        border: none;
+        border-bottom: 1px solid gray; 
+        margin-bottom: 10px;
+        width: 100%;
+        outline: none;
+      }
+
+      &__loggedInUser {
+        color: white;
+        font-size: 14px;
+      }
+
+      &__view {
+        color: white;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      &__closeButton {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: rgb(242, 242, 242);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: lighter;
+        cursor: pointer;
+      }
+      
+      &__closeButton span {
+        font-size: 16px;
+      }
+
+      &__login {
+        background-color: #1c508d;
+        color: #ffffff;
+        font-size: 14px;
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      &__rememberMe {
+        display: flex;
+        gap: 3px;
+      }
+
+      &__checkbox {
+        border: #1c508d;
+      }
+
+}
+
+input::placeholder {
+    color: #1c508d;
+}
+
+@media (max-width:450px) { 
+    .selectHeader {
+
+        &__select {
+            width: 120px;
+        }
+
+        &__input {
+            width: 100px
+        }
+    }
+}
+
+

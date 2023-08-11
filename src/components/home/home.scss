@@ -1,0 +1,108 @@
+
+.cartelera {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 4rem;
+    gap: 2rem;
+
+    &__cards {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &__title {
+        font-size: 1.125rem;
+        letter-spacing: .25px;
+        font-weight: 500;
+    }
+
+}
+
+@media (max-width:450px) { 
+    .cartelera {
+        width: 100%;
+        padding: 4rem 0.1rem;
+
+        &__title {
+            display: flex;
+            align-self: center;
+        }
+    }
+
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 320px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    padding: 1rem 1.2rem;
+    gap: 0.5rem;
+
+    &__image {
+        border-radius: 5px;
+        height: 450px;
+        width: 100%;
+    }
+
+    &__image:hover {
+        transform: scale(1.02);
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    &__span {
+        font-size: 13px;
+    }
+
+    &__runtime {
+        font-size: 10px;
+        background-color: rgba(209, 204, 204, 0.59);
+        width: 55px;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width:450px) { 
+
+    .card {
+        flex-direction: row;
+        width: 100%;
+
+        &__image {
+            width: 138px;
+            height: 208px;
+        }
+
+        &__title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        &__span {
+            font-size: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+}

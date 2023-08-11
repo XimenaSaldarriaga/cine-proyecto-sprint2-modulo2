@@ -1,0 +1,14 @@
+.carousel {
+
+    &__item {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        text-align: center;
+        margin: 0 2px;
+        transition: transform 300ms ease 100ms;
+        cursor: pointer;
+        object-fit: contain;
+    }
+}

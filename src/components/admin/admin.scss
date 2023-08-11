@@ -1,0 +1,188 @@
+.admin {
+
+    margin: 100px 180px;
+
+    &__video {
+        background-color: black;
+        display: flex;
+    }
+
+    &__img {
+        width: 20%;
+        border-radius: 5px;
+        margin-left: 5rem;
+    }
+
+    &__trailer {
+        width: 100%;
+        margin: 30px 30px;
+    }
+
+    &__main {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    &__info {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 14px;
+        color: gray;
+    }
+
+    &__subtitle {
+        color: black;
+        font-weight: 500;
+    }
+
+    &__cinemas {
+        width: 60%;
+    }
+
+    &__dates {
+        display: flex;
+        gap: 1rem;
+        color: white;
+        justify-content: center;
+        
+    }
+
+    &__date {
+        background-color: #1c508d;
+        display: flex;
+        flex-direction: column;
+        padding: 12px 20px;
+        border-radius: 5px;
+        line-height: 1.4rem;
+        opacity: 0.7;
+        text-align: center;
+    }
+
+    &__date:hover {
+        background-color: #0076ff;
+    }
+
+    &__day {
+        font-size: 25px;
+    }
+
+    &__month {
+        font-size: 12px;
+    }
+
+    &__theaters {
+        background-color: rgba(128, 128, 128, 0.079);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 5px;
+        margin-top: 2rem;
+        font-weight: 500;
+    }
+
+    &__theater {
+        border-bottom: 1px solid rgba(128, 128, 128, 0.671);
+        padding: 30px;
+    }
+
+    &__theater:hover {
+        background-color:  rgba(128, 128, 128, 0.116);
+    }
+
+    &__hours {
+        display: flex;
+        gap: 10px;
+    }
+
+    &__hour {
+        display: flex;
+        border: 1px solid #1c508d;
+        border-radius: 20px;
+        padding: 5px 10px;
+        width: 20%;
+        color: #1c508d;
+        justify-content: center;
+        font-size: 14px;
+        gap: 5px;
+        margin-top: 5px;
+    }
+
+    &__salas {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 15px;
+    }
+
+    &__sala {
+        display: flex;
+        gap: 5px;
+    }
+
+}
+
+.admin__date.selected-date {
+    opacity: 1;
+  }
+
+  .edit-icon {
+    color: rgb(232, 183, 7);
+    font-size: 20px;
+  }
+
+  .delete-icon {
+    color: red;
+    font-size: 20px;
+  }
+
+
+  @media (max-width:450px) { 
+
+    .admin {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .admin__video {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .admin__img {
+        width: 100%;
+        margin: 0;
+    }
+
+    .admin__trailer {
+        width: 100%;
+        margin: 0;
+        margin-top: 10px;
+    }
+
+    .admin__main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 50px 40px 50px 15px;
+    }
+
+    .admin__info  {
+        width: 90%;
+    }
+
+    .admin__cinemas {
+        width: 95%;
+        margin-top: 3rem;
+    }
+
+    .admin__hour {
+        width: 35%;
+    }
+
+  }

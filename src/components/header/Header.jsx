@@ -1,10 +1,15 @@
 import React from 'react'
 import './header.scss'
+import HeaderNav from '../headerNav/HeaderNav'
+import Carousel from '../carousel/Carousel'
+
+
 
 const Header = () => {
   return (
     <div className='header'>
-        <img src="https://archivos.cinecolombia.com/cineco-cms-frontend/1.0.100/dist/images/logo_cineco.svg" alt="" />
+      <HeaderNav />
+      <Carousel />
     </div>
   )
 }

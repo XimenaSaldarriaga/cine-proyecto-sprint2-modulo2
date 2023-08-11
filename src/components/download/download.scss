@@ -1,0 +1,57 @@
+.download {
+    display: flex;
+    justify-content: center;
+
+    &__div {
+        margin: 100px 180px;
+        display: flex;
+        flex-direction: column;
+        background-color: #1c508d;
+        width: 30%;
+        padding: 40px;
+        color: white;
+        gap: 2rem;
+    }
+
+    &__tickets {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__h2 {
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    &__date {
+        font-size: 12px;
+    }
+
+    &__info {
+        display: flex;
+        font-size: 14px;
+    }
+
+    &__movie {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    &__qr {
+        padding: 20px 20px;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+        background-color: white;
+    }
+
+}
+
+@media (max-width:450px) { 
+
+    .download__div {
+        width: 100%;
+    }
+}

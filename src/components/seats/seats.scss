@@ -1,0 +1,96 @@
+@mixin chairs__properties ($fill) {
+    width: 20px;
+    fill:$fill;
+    font-size: 10px;
+}
+
+.seats__div {
+    display: flex;
+    justify-content: space-between;
+    margin: 100px 180px;
+
+}
+.seats {
+    width: 35%;
+
+    &__options {
+        display: flex;
+        gap: 2rem;
+        margin-top: 30px;
+    }
+
+    &__option {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 12px;
+        align-items: center;
+    }
+
+    &__blue{
+        @include chairs__properties(#0090ca)
+    }
+    
+    &__yellow {
+            @include chairs__properties(#ffcd26)
+    }
+
+    &__red {
+        @include chairs__properties(#e04d39)
+}
+
+    &__subtitle{
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    &__paragraph {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    &__map {
+        display: grid;
+        grid-template-columns: repeat(20, 1fr);
+        gap: 15px 4px;
+        margin-top: 50px; 
+      }
+
+      &__maps {
+        display: flex;
+      }
+
+      &__summary {
+        width: 40%;
+      }
+}
+
+hr {
+    margin-top: 50px;
+    height: 3px;
+    background: #a9a4a4;
+}
+
+@media (max-width:450px) { 
+    .seats__div {
+        display: flex;
+        flex-direction: column;
+        margin: 50px 15px 50px 15px;
+    }
+
+    .seats {
+        width: 100%;
+    }
+
+    .seats__summary {
+        width: 100%;
+    }
+
+    .seats__blue {
+        width: 14px;
+    }
+
+    .seats__number {
+        font-size: 8px;
+    }
+
+}
