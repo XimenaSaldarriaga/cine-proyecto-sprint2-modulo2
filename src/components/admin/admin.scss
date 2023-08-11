@@ -102,7 +102,7 @@
         border: 1px solid #1c508d;
         border-radius: 20px;
         padding: 5px 10px;
-        width: 15%;
+        width: 20%;
         color: #1c508d;
         justify-content: center;
         font-size: 14px;
@@ -136,4 +136,53 @@
   .delete-icon {
     color: red;
     font-size: 20px;
+  }
+
+
+  @media (max-width:450px) { 
+
+    .admin {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .admin__video {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .admin__img {
+        width: 100%;
+        margin: 0;
+    }
+
+    .admin__trailer {
+        width: 100%;
+        margin: 0;
+        margin-top: 10px;
+    }
+
+    .admin__main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 50px 40px 50px 15px;
+    }
+
+    .admin__info  {
+        width: 70%;
+    }
+
+    .admin__cinemas {
+        width: 75%;
+        margin-top: 3rem;
+    }
+
+    .admin__hour {
+        width: 35%;
+    }
+
   }

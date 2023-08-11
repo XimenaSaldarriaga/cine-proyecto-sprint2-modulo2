@@ -76,8 +76,11 @@ const Admin = () => {
 
 
   return (
-    <div>
-      <HeaderNav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+
+    <>
+    <HeaderNav loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+    <div className='admin'>
+      
       {selectedMovie ? (
         <div className='admin__video'>
           <img className='admin__img' src={`${URL_IMAGE}${selectedMovie.poster_path}`} alt='' />
@@ -101,7 +104,6 @@ const Admin = () => {
       ) : (
         <p>Loading...</p>
       )}
-      <div className='admin'>
         <div className='admin__main'>
           {selectedMovie ? (
             <div className='admin__info'>
@@ -216,8 +218,9 @@ const Admin = () => {
             </div>
           </div>
         </div>
-      </div>
     </div>
+
+    </>
   );
 };
 
