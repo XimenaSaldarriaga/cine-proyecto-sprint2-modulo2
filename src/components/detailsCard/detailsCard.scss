@@ -73,3 +73,45 @@
         gap: 10px;
     }
 }
+
+@media (max-width:450px) {  
+
+    .details {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .details__buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .details__runtime {
+        display: flex;
+        background-color: white;
+        color: black;
+        padding: 0;
+        margin: 0;
+        justify-content: left;
+    }
+
+    .details__genre {
+        background-color: white;
+        color: black;
+        display: flex;
+        justify-content: left;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    .details__image {
+        width: 100%;
+    }
+
+    .details__movie {
+        width: 100%;
+        margin: 0;
+    }
+}
