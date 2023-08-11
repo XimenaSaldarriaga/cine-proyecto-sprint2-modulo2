@@ -72,3 +72,24 @@
     }
 
 }
+
+@media (max-width:450px) { 
+
+    .transaction {
+        display: flex;
+        flex-direction: column;
+        margin: 50px 40px 0px 15px;
+    }
+
+
+    .transaction__summary {
+        width: 100%;
+    }
+
+    .transaction__data {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        gap: 0.5rem;
+    }
+}
