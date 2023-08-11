@@ -69,3 +69,28 @@ hr {
     height: 3px;
     background: #a9a4a4;
 }
+
+@media (max-width:450px) { 
+    .seats__div {
+        display: flex;
+        flex-direction: column;
+        margin: 50px 15px 50px 15px;
+    }
+
+    .seats {
+        width: 100%;
+    }
+
+    .seats__summary {
+        width: 100%;
+    }
+
+    .seats__blue {
+        width: 14px;
+    }
+
+    .seats__number {
+        font-size: 8px;
+    }
+
+}
