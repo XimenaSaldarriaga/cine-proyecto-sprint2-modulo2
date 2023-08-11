@@ -74,3 +74,20 @@
         border-radius: 5px;
      }
 }
+
+@media (max-width:450px) {
+
+   .quantity {
+      display: flex;
+      flex-direction: column;
+      margin: 50px 15px 50px 15px;;
+   }
+
+   .selectTickets {
+      width: 100%;
+   }
+
+   .quantity__summary {
+      width: 100%;
+   }
+}
